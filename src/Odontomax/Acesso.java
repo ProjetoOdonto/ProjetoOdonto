@@ -2,6 +2,7 @@ package Odontomax;
 
 import Classes.Conecta;
 import Classes.Usuario;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -95,6 +96,11 @@ public class Acesso extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Acesso");
         setResizable(false);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         Painel.setBackground(new java.awt.Color(255, 255, 255));
@@ -121,6 +127,11 @@ public class Acesso extends javax.swing.JFrame {
         btn_entrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_entrarActionPerformed(evt);
+            }
+        });
+        btn_entrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btn_entrarKeyPressed(evt);
             }
         });
 
@@ -174,9 +185,9 @@ public class Acesso extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Odontomax/bg.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(-60, 0, 650, 500);
+        jLabel4.setBounds(-60, 0, 600, 460);
 
-        setSize(new java.awt.Dimension(549, 500));
+        setSize(new java.awt.Dimension(551, 500));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -198,6 +209,28 @@ public class Acesso extends javax.swing.JFrame {
     private void txt_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_usuarioActionPerformed
+
+    private void btn_entrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn_entrarKeyPressed
+        
+    }//GEN-LAST:event_btn_entrarKeyPressed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER){ 
+         
+           // TODO add your handling code here:
+        if (txt_usuario.getText().equals("")||txt_senha.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Digite o login e a senha");
+        } else if (txt_senha.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Digite a senha");
+        } else if (txt_usuario.getText().equals("")){
+            JOptionPane.showMessageDialog(null,"Digite o login");
+        } else {
+            login();
+        }
+        
+         
+         }
+    }//GEN-LAST:event_formKeyPressed
 
     /**
      * @param args the command line arguments
