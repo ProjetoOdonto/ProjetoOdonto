@@ -110,16 +110,9 @@ public class BancoFuncoes {
                    }
 
                    while (rs.next()){
-                       String telefone = rs.getString("telefone");
-                        String nome = rs.getString("nome");
-                        String uf = rs.getString("uf");
-                        String cidade = rs.getString("cidade");
-                        String bairro = rs.getString("bairro");
-                        String logradouro = rs.getString("endereco");
-                        String numero = rs.getString("numero");
-                        String cep = rs.getString("cep");
-                        String complemento = rs.getString("complemento");
-                        dtm.addRow(new Object[]{telefone, nome, uf, cidade, bairro, logradouro, numero, cep, complemento});
+                       String procedimento = rs.getString("ds_procedimento");
+             
+                        dtm.addRow(new Object[]{procedimento});
                    }
 
 
