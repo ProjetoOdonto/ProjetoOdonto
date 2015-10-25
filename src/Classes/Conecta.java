@@ -18,8 +18,7 @@ public class Conecta {
             Class.forName(driverName);
             
             
-           //aaaaaaa
-            
+       
             
             
             String url = "jdbc:mysql://" + serverName + "/" + mydatabase;

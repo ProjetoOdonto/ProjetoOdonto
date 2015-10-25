@@ -6,6 +6,10 @@
 
 package Odontomax.Paciente;
 
+import Classes.Paciente;
+import Classes.Usuario;
+import DAOpackage.DAOPaciente;
+
 /**
  *
  * @author Vinicius
@@ -15,8 +19,53 @@ public class CadastroPaciente_Visualizar_Selecionado extends javax.swing.JFrame 
     /**
      * Creates new form CadastroPaciente_Visualizar_Selecionado
      */
-    public CadastroPaciente_Visualizar_Selecionado() {
+    
+    final private String usuario;
+    final private String nome;
+    final private String setor;
+    final private int codigo;
+    public CadastroPaciente_Visualizar_Selecionado(Paciente f,  Usuario user) {
         initComponents();
+        this.nome = user.getNome();
+        this.usuario = user.getLogin();
+        this.setor = user.getSetor();
+        this.codigo = user.getCodigo();
+        
+        
+            txt_nome.setText(f.getNome());
+        txt_cpf.setText(f.getCpf());
+        txt_rua.setText(f.getLugadouro());
+        txt_cep.setText(f.getCep());
+        txt_bairro.setText(f.getBairro());
+        txt_cidade.setText(f.getNome_cidade());
+        txt_email.setText(f.getEmail());
+        txt_celular.setText(f.getCelular());
+        txt_datanascimento.setText(f.getDt_nascimento());
+        txt_residencial.setText(f.getTelefone());
+        box_sexo.setSelectedItem(f.getSexo());
+        box_estado.setSelectedItem(f.getSigla_estado());
+        System.out.println(f.getSexo());
+            
+              
+                      
+      
+    }
+
+    private CadastroPaciente_Visualizar_Selecionado() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+       public Paciente montaPaciente(){
+        Paciente f = new Paciente();        
+        f.setNome(txt_nome.getText());
+        f.setRg(txt_rg.getText());
+        f.setCep(txt_cep.getText());
+        f.setBairro(txt_bairro.getText());
+        f.setDt_nascimento(txt_datanascimento.getText());
+        f.setSexo(box_sexo.getSelectedItem().toString());
+        f.setSigla_estado(box_estado.getSelectedItem().toString());
+       
+        f.setBairro(txt_bairro.getText());        
+        return f;
     }
 
     /**
@@ -121,7 +170,7 @@ public class CadastroPaciente_Visualizar_Selecionado extends javax.swing.JFrame 
             }
         });
 
-        box_estado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecionar", "Acre (AC)", "Alagoas (AL)", "Amapá (AP)", "Amazonas (AM)", "Bahia (BA)", "Ceará (CE)", "Distrito Federal (DF)", "Espírito Santo (ES)", "Goiás (GO)", "Maranhão (MA)", "Mato Grosso (MT)", "Mato Grosso do Sul (MS)", "Minas Gerais (MG)", "Pará (PA) ", "Paraíba (PB)", "Paraná (PR)", "Pernambuco (PE)", "Piauí (PI)", "Rio de Janeiro (RJ)", "Rio Grande do Norte (RN)", "Rio Grande do Sul (RS)", "Rondônia (RO)", "Roraima (RR)", "Santa Catarina (SC)", "São Paulo (SP)", "Sergipe (SE)", "Tocantins (TO)" }));
+        box_estado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecionar", "AC", "AL", "AP", "AM", "BA", "CE", "DF)", "ES", "GO", "MA", "MT", "MS", "MG", "PA ", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         box_estado.setEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -129,7 +178,7 @@ public class CadastroPaciente_Visualizar_Selecionado extends javax.swing.JFrame 
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(8, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -213,12 +262,22 @@ public class CadastroPaciente_Visualizar_Selecionado extends javax.swing.JFrame 
         txt_rg.setEnabled(false);
 
         txt_cpf.setEnabled(false);
+        txt_cpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_cpfActionPerformed(evt);
+            }
+        });
 
         txt_nome.setEnabled(false);
+        txt_nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nomeActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("RG:");
 
-        box_sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecionar", "Masculino", "Feminino" }));
+        box_sexo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecionar", "MASCULINO", "FEMININO" }));
         box_sexo.setEnabled(false);
 
         jLabel2.setText("CPF:");
@@ -262,7 +321,7 @@ public class CadastroPaciente_Visualizar_Selecionado extends javax.swing.JFrame 
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(txt_rg, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(0, 0, Short.MAX_VALUE))))
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(39, 39, 39)))
         );
         jPanel1Layout.setVerticalGroup(
@@ -518,6 +577,15 @@ public class CadastroPaciente_Visualizar_Selecionado extends javax.swing.JFrame 
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txt_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nomeActionPerformed
+     
+              
+    }//GEN-LAST:event_txt_nomeActionPerformed
+
+    private void txt_cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_cpfActionPerformed
 
     /**
      * @param args the command line arguments

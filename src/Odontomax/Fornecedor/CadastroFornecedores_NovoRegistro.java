@@ -125,7 +125,7 @@ public class CadastroFornecedores_NovoRegistro extends javax.swing.JFrame {
         getContentPane().add(jLabel21);
         jLabel21.setBounds(290, 20, 330, 44);
 
-        painel_usuario1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 0)), "Usuário", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 153, 0))); // NOI18N
+        painel_usuario1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 0)), "Usuário", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(255, 153, 0))); // NOI18N
         painel_usuario1.setOpaque(false);
 
         label_nomeusuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -170,7 +170,7 @@ public class CadastroFornecedores_NovoRegistro extends javax.swing.JFrame {
         );
 
         getContentPane().add(painel_usuario1);
-        painel_usuario1.setBounds(10, 11, 274, 79);
+        painel_usuario1.setBounds(10, 11, 273, 81);
 
         btn_voltar.setText("Voltar");
         btn_voltar.addActionListener(new java.awt.event.ActionListener() {
@@ -179,7 +179,7 @@ public class CadastroFornecedores_NovoRegistro extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_voltar);
-        btn_voltar.setBounds(650, 10, 61, 40);
+        btn_voltar.setBounds(650, 10, 59, 40);
 
         btn_novo.setText("Novo");
         btn_novo.addActionListener(new java.awt.event.ActionListener() {
@@ -200,7 +200,7 @@ public class CadastroFornecedores_NovoRegistro extends javax.swing.JFrame {
         getContentPane().add(btn_salvar);
         btn_salvar.setBounds(20, 430, 121, 51);
 
-        painel_dados.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 0)), "Dados do Fornecedor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 153, 0))); // NOI18N
+        painel_dados.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 0)), "Dados do Fornecedor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(255, 153, 0))); // NOI18N
         painel_dados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         painel_dados.setName("Dados"); // NOI18N
         painel_dados.setOpaque(false);
@@ -212,6 +212,11 @@ public class CadastroFornecedores_NovoRegistro extends javax.swing.JFrame {
         jLabel2.setText("CNPJ:");
 
         txt_fornecedor.setEnabled(false);
+        txt_fornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_fornecedorActionPerformed(evt);
+            }
+        });
 
         txt_cnpj.setEnabled(false);
 
@@ -395,6 +400,10 @@ public class CadastroFornecedores_NovoRegistro extends javax.swing.JFrame {
         // TODO add your handling code here:
         Cancelar();
     }//GEN-LAST:event_btn_cancelarActionPerformed
+
+    private void txt_fornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_fornecedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_fornecedorActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
