@@ -5,6 +5,8 @@ import DAOpackage.DAOPaciente;
 import DAOpackage.DAOProcedimento;
 import Classes.BancoFuncoes;
 import Classes.GerarPdf;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -14,6 +16,8 @@ public class Odontograma extends javax.swing.JFrame {
 BancoFuncoes bf = new BancoFuncoes();
 Banco ba = new Banco();    
 GerarPdf pdf = new GerarPdf();
+
+  private String datahoje;
 
     public Odontograma() {
         initComponents();
@@ -28,6 +32,10 @@ GerarPdf pdf = new GerarPdf();
            return false;  
    
    }});   
+        
+        
+        
+        dataHoje();
     }
     
     public void carregarListaProc(){
@@ -49,6 +57,8 @@ GerarPdf pdf = new GerarPdf();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        txDataHoje = new com.toedter.calendar.JDateChooser();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -83,6 +93,7 @@ GerarPdf pdf = new GerarPdf();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Odontograma");
+        getContentPane().setLayout(null);
 
         painel_usuario.setBorder(javax.swing.BorderFactory.createTitledBorder("Usuário"));
 
@@ -94,6 +105,10 @@ GerarPdf pdf = new GerarPdf();
 
         jLabel3.setText("Nome do Usuário");
 
+        jLabel22.setText("Data:  ");
+
+        txDataHoje.setEnabled(false);
+
         javax.swing.GroupLayout painel_usuarioLayout = new javax.swing.GroupLayout(painel_usuario);
         painel_usuario.setLayout(painel_usuarioLayout);
         painel_usuarioLayout.setHorizontalGroup(
@@ -102,10 +117,14 @@ GerarPdf pdf = new GerarPdf();
                 .addContainerGap()
                 .addGroup(painel_usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painel_usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
+                    .addGroup(painel_usuarioLayout.createSequentialGroup()
+                        .addComponent(txDataHoje, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -120,8 +139,15 @@ GerarPdf pdf = new GerarPdf();
                 .addGroup(painel_usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(painel_usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txDataHoje, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        getContentPane().add(painel_usuario);
+        painel_usuario.setBounds(10, 11, 274, 120);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Selecionar Paciente"));
 
@@ -215,6 +241,9 @@ GerarPdf pdf = new GerarPdf();
                     .addComponent(jButton7))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(300, 50, 561, 235);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Odontograma"));
 
@@ -388,6 +417,9 @@ GerarPdf pdf = new GerarPdf();
                 .addGap(149, 149, 149))
         );
 
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(20, 320, 841, 313);
+
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Histórico de Procedimentos"));
 
         hprocedimentos.setModel(new javax.swing.table.DefaultTableModel(
@@ -395,14 +427,14 @@ GerarPdf pdf = new GerarPdf();
 
             },
             new String [] {
-                "Data", "Procedimento"
+                "Procedimento"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class
+                java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false
+                false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -431,38 +463,10 @@ GerarPdf pdf = new GerarPdf();
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(painel_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(80, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(painel_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel5);
+        jPanel5.setBounds(20, 140, 274, 150);
 
-        setBounds(0, 0, 947, 670);
+        setBounds(0, 0, 956, 693);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
@@ -557,6 +561,30 @@ GerarPdf pdf = new GerarPdf();
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    public void dataHoje(){
+        Date data = new Date();
+        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");  
+        String novaData = formatador.format(data);  
+        txDataHoje.setDate(data);
+        
+        
+   }
+    
+     public String getDatahoje() {
+       if (txDataHoje.getDate()!=null){
+          return datahoje = new SimpleDateFormat("dd/MM/yyyy").format(txDataHoje.getDate());
+        }else{
+          return null;
+        }
+    }
+     public String getDataFormat() {
+       if (txDataHoje.getDate()!=null){
+          return datahoje = new SimpleDateFormat("yyyy/MM/dd").format(txDataHoje.getDate());
+        }else{
+          return null;
+        }
+    }
+    
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -580,6 +608,7 @@ GerarPdf pdf = new GerarPdf();
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -598,6 +627,7 @@ GerarPdf pdf = new GerarPdf();
     private javax.swing.JPanel painel_usuario;
     private javax.swing.JTable tabela_pesquisa_paciente;
     private javax.swing.JTable tabela_pesquisa_procedimento;
+    private com.toedter.calendar.JDateChooser txDataHoje;
     private javax.swing.JTextArea txtArea;
     private javax.swing.JTextField txtValor;
     private javax.swing.JTextField txt_cpf;
