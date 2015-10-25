@@ -1092,7 +1092,7 @@ public class Banco {
 
     //
 
-    public boolean gravarCliente(String telefone,String nome,String cep,String cidade,String bairro ,String uf,String numero,String endereco,String complemento) {
+    public boolean gravarOdonto(String cod,String codprocede,String dsprocede,String detalhes,String valor) {
         conecta();
         String sql;
 
@@ -1103,8 +1103,8 @@ public class Banco {
               
           
             
-                sql = "INSERT INTO clientes(telefone, nome, cep, cidade, bairro, uf,numero, endereco, complemento) VALUES ('"; // nome das variaveis do BD
-                sql += telefone + "', '" + nome + "','" + cep + "' , '"+ cidade +"' , '"+ bairro +"' , '"+ uf +"' ,'" + numero + "', '" + endereco + "','" + complemento +"')";
+                sql = "INSERT INTO procedimento(cod_usuario, codprocede, ds_procedimento, detalhes, valor) VALUES ('"; // nome das variaveis do BD
+                sql += cod + "', '" + codprocede + "','" + dsprocede + "' , '"+ detalhes +"' , '"+ valor +"')";
                 
            
 
