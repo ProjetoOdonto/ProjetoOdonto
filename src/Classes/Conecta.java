@@ -17,6 +17,11 @@ public class Conecta {
             String driverName = "com.mysql.jdbc.Driver";
             Class.forName(driverName);
             
+            
+           //aaaaaaa
+            
+            
+            
             String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
             con = DriverManager.getConnection(url, username, password);
             
