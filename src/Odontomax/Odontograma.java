@@ -269,6 +269,11 @@ public class Odontograma extends javax.swing.JFrame {
         jLabel8.setText("Valor:");
 
         jButton5.setText("Imprimir");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -436,6 +441,10 @@ public class Odontograma extends javax.swing.JFrame {
         // TODO add your handling code here:
         carregarListaPaciente();
     }//GEN-LAST:event_btn_buscar_pacActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     public static void main(String args[]) {
         
