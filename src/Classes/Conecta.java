@@ -24,6 +24,7 @@ public class Conecta {
             System.out.println("Driver não encontrado " + e.toString());
         } catch (SQLException e) {
             System.out.println("Erro ao conectar o Banco de Dados " + e.toString());
+            
         }
         return con;
     }
