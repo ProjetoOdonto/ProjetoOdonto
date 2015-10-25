@@ -12,7 +12,7 @@ public class Conecta {
             String mydatabase = "MYSQL";
             
             String username = "root";
-            String password = "";
+            String password = "root";
             
             String driverName = "com.mysql.jdbc.Driver";
             Class.forName(driverName);
