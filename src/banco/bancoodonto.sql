@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v9.51 
-MySQL - 5.6.26-log : Database - odontomax
+MySQL - 5.6.26-log : Database - pizzaria15
 *********************************************************************
 */
 
@@ -12,262 +12,267 @@ MySQL - 5.6.26-log : Database - odontomax
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`odontomax` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`pizzaria15` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-USE `odontomax`;
+USE `pizzaria15`;
 
-/*Table structure for table `agendamentos` */
+/*Table structure for table `categoriaproduto` */
 
-DROP TABLE IF EXISTS `agendamentos`;
+DROP TABLE IF EXISTS `categoriaproduto`;
 
-CREATE TABLE `agendamentos` (
-  `cod_paciente` int(3) NOT NULL,
-  `nome_paciente` varchar(50) DEFAULT NULL,
-  `data` varchar(10) DEFAULT NULL,
-  `hora` varchar(5) DEFAULT NULL,
-  `tipoconsulta` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/*Data for the table `agendamentos` */
-
-insert  into `agendamentos`(`cod_paciente`,`nome_paciente`,`data`,`hora`,`tipoconsulta`) values (1,'1','29/01/1995','10:15','Consulta de Rotina'),(1,'VINICIUS ARAUJO ALVES','24/34/3452','54:65','Tratamento'),(10,'ANDRE','  /  /    ','  :  ','Selecionar'),(9,'VANDERLEI TERTO ALVES','  /  /    ','  :  ','Selecionar'),(1,'VINICIUS ARAUJO ALVES','29/15/1151','21:21','Tratamento'),(11,'bruno','32/13/2112','21:12','Consulta de Rotina');
-
-/*Table structure for table `aluno` */
-
-DROP TABLE IF EXISTS `aluno`;
-
-CREATE TABLE `aluno` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `rgm` varchar(7) DEFAULT NULL,
-  `nome` varchar(80) DEFAULT NULL,
-  `curso` varchar(4) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  `turma` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `categoriaproduto` (
+  `categoria` varchar(20) NOT NULL,
+  PRIMARY KEY (`categoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `aluno` */
+/*Data for the table `categoriaproduto` */
+
+insert  into `categoriaproduto`(`categoria`) values ('Alimento'),('Pizza'),('Refrigerante');
 
 /*Table structure for table `clientes` */
 
 DROP TABLE IF EXISTS `clientes`;
 
 CREATE TABLE `clientes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(80) DEFAULT NULL,
-  `data_nasc` varchar(11) DEFAULT NULL,
-  `cpf` varchar(15) DEFAULT NULL,
-  `rg` varchar(20) DEFAULT NULL,
-  `endereco` varchar(100) DEFAULT NULL,
-  `tel1` varchar(15) DEFAULT NULL,
-  `tel2` varchar(15) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `telefone` varchar(13) NOT NULL,
+  `nome` varchar(50) DEFAULT NULL,
+  `cep` varchar(10) DEFAULT NULL,
+  `endereco` varchar(50) DEFAULT NULL,
+  `numero` varchar(6) DEFAULT NULL,
+  `complemento` varchar(200) DEFAULT NULL,
+  `cidade` varchar(50) DEFAULT NULL,
+  `uf` varchar(2) DEFAULT NULL,
+  `bairro` varchar(50) DEFAULT NULL,
+  `situacao` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`telefone`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `clientes` */
 
-/*Table structure for table `despecas` */
+insert  into `clientes`(`telefone`,`nome`,`cep`,`endereco`,`numero`,`complemento`,`cidade`,`uf`,`bairro`,`situacao`) values ('10101010','Paulo','08080110','HIPOLITO CARON','10','dfgsgf','SAO PAULO','SP','PARQUE PAULISTANO',NULL),('11343485','Paulo','08080300','FIGUEIREDO PIMENTEL','10','dfsfds','SAO PAULO','SP','PARQUE PAULISTANO',NULL),('12345678','Teste Caixa','08081400','ALVARO COELHO','10','10','SAO PAULO','SP','PARQUE PAULISTANO',NULL),('20258316','Teste Caixa','08080100','SUACUAPARA','10','proximo ao mercado nagumo','SAO PAULO','SP','PARQUE PAULISTANO',NULL),('25853775','andreia','08080100','SUACUAPARA','276','','SAO PAULO','SP','PARQUE PAULISTANO',NULL),('25858180','Teste Caixa','08080300','FIGUEIREDO PIMENTEL','10','aaaaaaa','SAO PAULO','SP','PARQUE PAULISTANO',NULL);
 
-DROP TABLE IF EXISTS `despecas`;
+/*Table structure for table `compras` */
 
-CREATE TABLE `despecas` (
-  `COD_DESPECAS` int(55) NOT NULL AUTO_INCREMENT,
-  `COD_FORNECEDOR` int(55) DEFAULT NULL,
-  `VALOR` double DEFAULT NULL,
-  `SITUACAO` varchar(10) DEFAULT NULL,
-  `DATA_LANCAMENTO` date DEFAULT NULL,
-  `DATA_EMISSAO` date DEFAULT NULL,
-  `DATA_VENCIMENTO` date DEFAULT NULL,
-  PRIMARY KEY (`COD_DESPECAS`),
-  KEY `FORNEC_DESPESA` (`COD_FORNECEDOR`),
-  CONSTRAINT `FORNEC_DESPESA` FOREIGN KEY (`COD_FORNECEDOR`) REFERENCES `fornecedor` (`cod_fornecedor`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `compras`;
 
-/*Data for the table `despecas` */
+CREATE TABLE `compras` (
+  `NPedido` int(10) NOT NULL AUTO_INCREMENT,
+  `nomeFantasia` varchar(50) DEFAULT NULL,
+  `cpfFor` varchar(14) DEFAULT NULL,
+  `cnpjFor` varchar(18) DEFAULT NULL,
+  `formapagto` varchar(18) DEFAULT NULL,
+  `condicaopagto` varchar(9) DEFAULT NULL,
+  `parcelas` int(1) DEFAULT NULL,
+  `tipopedido` varchar(7) DEFAULT NULL,
+  `valortotal` float(5,2) DEFAULT NULL,
+  `valordesc` float(5,2) DEFAULT NULL,
+  `valornf` float(5,2) DEFAULT NULL,
+  `observacao` varchar(200) DEFAULT NULL,
+  `tipoproduto` varchar(30) DEFAULT NULL,
+  `produto` varchar(50) DEFAULT NULL,
+  `unidmedida` varchar(2) DEFAULT NULL,
+  `refproduto` varchar(20) DEFAULT NULL,
+  `qtde` int(7) DEFAULT NULL,
+  `valorunit` float(5,2) DEFAULT NULL,
+  `valordescitens` float(5,2) DEFAULT NULL,
+  `valornfitens` float(5,2) DEFAULT NULL,
+  PRIMARY KEY (`NPedido`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
-insert  into `despecas`(`COD_DESPECAS`,`COD_FORNECEDOR`,`VALOR`,`SITUACAO`,`DATA_LANCAMENTO`,`DATA_EMISSAO`,`DATA_VENCIMENTO`) values (1,1,345,'pago','2015-09-10','2015-08-30','2015-09-03'),(2,1,35,'pago','0000-00-00','0000-00-00','0000-00-00'),(3,1,35,'pago','0000-00-00','0000-00-00','0000-00-00'),(4,1,35,'pago','0000-00-00','0000-00-00','0000-00-00'),(5,1,35,'pago','2015-09-06','2015-09-06','2015-09-06'),(6,1,45,'Pago','2015-09-02','2015-09-02','2015-09-02'),(7,1,45,'Pago','2015-09-02','2015-09-02','2015-09-02');
+/*Data for the table `compras` */
+
+insert  into `compras`(`NPedido`,`nomeFantasia`,`cpfFor`,`cnpjFor`,`formapagto`,`condicaopagto`,`parcelas`,`tipopedido`,`valortotal`,`valordesc`,`valornf`,`observacao`,`tipoproduto`,`produto`,`unidmedida`,`refproduto`,`qtde`,`valorunit`,`valordescitens`,`valornfitens`) values (10,'gfdgdf','455.365.058-40','01.554.910/0001-89','Cartão de Crédito','Parcelado',6,'Pedido',4.00,5.00,45.00,'4554','Massa','massa para pizza','UN','5',4,5.00,4.00,5.00),(17,'gfdgdf','455.365.058-40','01.554.910/0001-89','Cartão de Crédito','Parcelado',6,'Pedido',4.00,5.00,45.00,'4554','Massa','massa para pizza','UN','5',4,5.00,4.00,5.00),(19,'Paulo','455.365.058-40','  .   .   /    -  ','Cartão de Crédito','Parcelado',6,'Pedido',4.00,5.00,45.00,'4554','Massa','massa para pizza','UN','5',4,5.00,4.00,5.00);
+
+/*Table structure for table `contaspagar` */
+
+DROP TABLE IF EXISTS `contaspagar`;
+
+CREATE TABLE `contaspagar` (
+  `notaFiscal` varchar(100) NOT NULL,
+  `descricao` varchar(200) DEFAULT NULL,
+  `dataRecebimento` varchar(10) DEFAULT NULL,
+  `dataEmissao` varchar(10) DEFAULT NULL,
+  `dataVencimento` varchar(10) DEFAULT NULL,
+  `valor` varchar(10) DEFAULT NULL,
+  `juros` varchar(10) DEFAULT NULL,
+  `multa` varchar(10) DEFAULT NULL,
+  `fornecedor` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`notaFiscal`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `contaspagar` */
+
+insert  into `contaspagar`(`notaFiscal`,`descricao`,`dataRecebimento`,`dataEmissao`,`dataVencimento`,`valor`,`juros`,`multa`,`fornecedor`) values ('121','jghj','12/12/1212','12/12/1212','12/12/1212','34,00','43,00','3,00','Paulo'),('42442','asdfghjklç','12/12/1212','12/12/1212','12/12/1212','34,00','43,00','3,00','Paulo');
+
+/*Table structure for table `contasreceber` */
+
+DROP TABLE IF EXISTS `contasreceber`;
+
+CREATE TABLE `contasreceber` (
+  `telefone` varchar(13) DEFAULT NULL,
+  `Cliente` varchar(50) DEFAULT NULL,
+  `descricao` varchar(200) DEFAULT NULL,
+  `valor` varchar(10) DEFAULT NULL,
+  `juros` varchar(10) DEFAULT NULL,
+  `multa` varchar(10) DEFAULT NULL,
+  `tipopagamento` varchar(20) DEFAULT NULL,
+  `nparcela` varchar(1) DEFAULT NULL,
+  `dtrecebimento` varchar(10) DEFAULT NULL,
+  `dtemissao` varchar(10) DEFAULT NULL,
+  `dtvencimento` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `contasreceber` */
+
+insert  into `contasreceber`(`telefone`,`Cliente`,`descricao`,`valor`,`juros`,`multa`,`tipopagamento`,`nparcela`,`dtrecebimento`,`dtemissao`,`dtvencimento`) values ('545','6565','7876','78,00','7,00','7,00','Cartão de Débito','1','56/54/6546','45/65/4654','56/65/6546'),('11343485','Paulo','5455234','4,00','3,00','2,00','Cartão de Débito','1','34/23/4234','34/23/4234','23/42/4324');
 
 /*Table structure for table `fornecedor` */
 
 DROP TABLE IF EXISTS `fornecedor`;
 
 CREATE TABLE `fornecedor` (
-  `cod_fornecedor` int(5) NOT NULL AUTO_INCREMENT,
-  `ds_fornecedor` varchar(45) DEFAULT NULL,
-  `cnpj` varchar(18) DEFAULT NULL,
-  `lugadouro` varchar(45) DEFAULT NULL,
-  `cep` varchar(8) DEFAULT NULL,
-  `bairro` varchar(45) DEFAULT NULL,
-  `cidade` varchar(45) DEFAULT NULL,
-  `estado` varchar(20) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL,
-  `telefone` varchar(10) DEFAULT NULL,
-  `cod_usuario` int(11) DEFAULT NULL,
-  PRIMARY KEY (`cod_fornecedor`),
-  KEY `cod_usuario_idx` (`cod_usuario`),
-  CONSTRAINT `cod_usuario_fornec` FOREIGN KEY (`cod_usuario`) REFERENCES `usuario` (`cod_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+  `cnpjFor` varchar(20) NOT NULL,
+  `cpfFor` varchar(15) DEFAULT NULL,
+  `nomeFantasia` varchar(50) DEFAULT NULL,
+  `endeFor` varchar(50) DEFAULT NULL,
+  `cidadeFor` varchar(30) DEFAULT NULL,
+  `nomeContato` varchar(50) DEFAULT NULL,
+  `emailFor` varchar(30) DEFAULT NULL,
+  `bairroFor` varchar(30) DEFAULT NULL,
+  `telFor` varchar(15) DEFAULT NULL,
+  `cepFor` varchar(13) DEFAULT NULL,
+  `celFor` varchar(14) DEFAULT NULL,
+  `estadualFor` varchar(15) DEFAULT NULL,
+  `numFor` varchar(6) DEFAULT NULL,
+  `tel2For` varchar(15) DEFAULT NULL,
+  `siteFor` varchar(40) DEFAULT NULL,
+  `tipopessoa` varchar(17) DEFAULT NULL,
+  `ufFor` varchar(2) DEFAULT NULL,
+  `tipoproduto` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`cnpjFor`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `fornecedor` */
 
-insert  into `fornecedor`(`cod_fornecedor`,`ds_fornecedor`,`cnpj`,`lugadouro`,`cep`,`bairro`,`cidade`,`estado`,`email`,`telefone`,`cod_usuario`) values (1,'TECNOPLAST MATERIAIS DESCARTAVEIS','05.569.214/0001-10','RUA SÃO JORGE, 653','08456110','TATUAPÉ','SÃO PAULO','SP','CONTATO@TECNOPLAST.COM.BR','1136658745',1),(2,'CENTRAL MEDICA MEDICAMENTOS','45.658.985/0002-84','RUA MONTE CARLO, 110','54125698','CENTRO','ARARAQUARA','SP','CENTRALMEDICA@CENTRALMEDICA.COM.BR','1933256498',5),(3,'QUALITA MEDICAMENTOS LTDA','01.546.547/0001-89','RUA SANTO AGOSTINHO, 444','54125658','CENTRO','COSMÓPOLIS','SP','ATENDIMENTO@QUALITA.COM.BR','1933247455',1),(4,'BRASCOOP DESCARTÁVEIS LTDA','65.547.897/0004-89','RUA DO GASÔMETRO, 154','03008000','BRÁS','SÃO PAULO','SP','BRASCOOP@BRASCOOP.COM.BR','1133275199',1),(5,'ELETROPAULO','23.345.897/0009-76','AVENIDA SÃO MIGUEL','08070002','SÃO MIGUEL','SÃO PAULO','SP','ELETROPAULO@ELETRO.COM.BR','0800727212',1),(6,'SABESP','23.345.868/0009-73','AVENIDA SÃO MIGUEL','90900999','SÃO MIGUEL',NULL,NULL,NULL,NULL,NULL);
+insert  into `fornecedor`(`cnpjFor`,`cpfFor`,`nomeFantasia`,`endeFor`,`cidadeFor`,`nomeContato`,`emailFor`,`bairroFor`,`telFor`,`cepFor`,`celFor`,`estadualFor`,`numFor`,`tel2For`,`siteFor`,`tipopessoa`,`ufFor`,`tipoproduto`) values ('  .   .   /    -  ','455.365.058-40','Paulo','SUACUAPARA','SAO PAULO','Paulo','a@a.com','PARQUE PAULISTANO','(42)3424-3242','08080100','(34)23525-4525','454.545.435.524','43','(23)1231-2423','a.com.br','Pessoa Fisica','SP','Pizza'),('38.362.852/0001-00','   .   .   -  ','Paulo','SUACUAPARA','SAO PAULO','Paulo','a@a.com','PARQUE PAULISTANO','(42)3424-3242','08080100','(34)23525-4525','454.545.435.524','43','(23)1231-2423','a.com.br','Pessoa Juridica','SP','Refrigerante');
 
-/*Table structure for table `item` */
+/*Table structure for table `funcionario` */
 
-DROP TABLE IF EXISTS `item`;
+DROP TABLE IF EXISTS `funcionario`;
 
-CREATE TABLE `item` (
-  `cod_pedido` int(5) DEFAULT NULL,
-  `cod_produto` int(5) DEFAULT NULL,
-  `quantidade` int(5) DEFAULT NULL,
-  KEY `item_pedido` (`cod_pedido`),
-  KEY `item_produto` (`cod_produto`),
-  CONSTRAINT `item_pedido` FOREIGN KEY (`cod_pedido`) REFERENCES `pedido` (`cod_pedido`),
-  CONSTRAINT `item_produto` FOREIGN KEY (`cod_produto`) REFERENCES `produto` (`cod_produto`) ON DELETE NO ACTION ON UPDATE NO ACTION
+CREATE TABLE `funcionario` (
+  `nomeFun` varchar(50) DEFAULT NULL,
+  `rgFun` varchar(15) DEFAULT NULL,
+  `cpfFun` varchar(15) NOT NULL,
+  `nasciFun` varchar(10) DEFAULT NULL,
+  `endeFun` varchar(100) DEFAULT NULL,
+  `compleFun` varchar(100) DEFAULT NULL,
+  `bairroFun` varchar(50) DEFAULT NULL,
+  `cidadeFun` varchar(20) DEFAULT NULL,
+  `cepFun` varchar(15) DEFAULT NULL,
+  `numFun` varchar(5) DEFAULT NULL,
+  `telFun` varchar(15) DEFAULT NULL,
+  `celFun` varchar(15) DEFAULT NULL,
+  `sexoFun` varchar(10) NOT NULL,
+  `setorFun` varchar(20) DEFAULT NULL,
+  `ufFun` varchar(2) DEFAULT NULL,
+  `motoboy` varchar(3) DEFAULT NULL,
+  `placamoto` varchar(7) DEFAULT NULL,
+  `cnh` varchar(11) DEFAULT NULL,
+  `modelomoto` varchar(15) DEFAULT NULL,
+  `situacao` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`cpfFun`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-/*Data for the table `item` */
+/*Data for the table `funcionario` */
 
-insert  into `item`(`cod_pedido`,`cod_produto`,`quantidade`) values (1,3,13),(1,2,14),(1,2,9),(2,1,6),(3,2,5),(4,1,50),(4,3,30);
+insert  into `funcionario`(`nomeFun`,`rgFun`,`cpfFun`,`nasciFun`,`endeFun`,`compleFun`,`bairroFun`,`cidadeFun`,`cepFun`,`numFun`,`telFun`,`celFun`,`sexoFun`,`setorFun`,`ufFun`,`motoboy`,`placamoto`,`cnh`,`modelomoto`,`situacao`) values ('Paulo','48.695.431-6','057.045.958-39','29/01/1995','SUACUAPARA','sds','PARQUE PAULISTANO','SAO PAULO','08080100',' 10','(11)2585-8180','(11)25813-1621','Masculino','balcao','SP',NULL,NULL,NULL,NULL,NULL),('william','39.725.858-6','264.051.848-89','28/07/2000','SUACUAPARA','','PARQUE PAULISTANO','SAO PAULO','08080100','276','(11)2585-3775','(11)96791-6805','Masculino','caixa','SP','SIM','fd','dfsdfsff','dsfsfdf',NULL),('Paulo','48.695.431-6','455.365.058-40','29/01/1995','SUACUAPARA','a','PARQUE PAULISTANO','SAO PAULO','08080100','5','(11)2154-5221','(54)54121-2548','Masculino','caixa','SP','NAO','','','','Ativado');
 
-/*Table structure for table `paciente` */
+/*Table structure for table `itenspedido` */
 
-DROP TABLE IF EXISTS `paciente`;
+DROP TABLE IF EXISTS `itenspedido`;
 
-CREATE TABLE `paciente` (
-  `cod_paciente` int(11) NOT NULL AUTO_INCREMENT,
-  `nome_paciente` varchar(45) DEFAULT NULL,
-  `rg_paciente` varchar(10) NOT NULL,
-  `cpf_paciente` varchar(13) NOT NULL,
-  `celular_paciente` varchar(12) DEFAULT NULL,
-  `telefone_paciente` varchar(12) DEFAULT NULL,
-  `email_paciente` varchar(45) DEFAULT NULL,
-  `lugadouro_paciente` varchar(45) DEFAULT NULL,
-  `cep_paciente` varchar(9) DEFAULT NULL,
-  `estado_paciente` varchar(20) DEFAULT NULL,
-  `cidade_paciente` varchar(30) DEFAULT NULL,
-  `sexo_paciente` varchar(45) DEFAULT NULL,
-  `bairro_paciente` varchar(45) DEFAULT NULL,
-  `data_nascimento` date DEFAULT NULL,
-  PRIMARY KEY (`cod_paciente`),
-  UNIQUE KEY `cpf_paciente_UNIQUE` (`cpf_paciente`),
-  UNIQUE KEY `rg_paciente_UNIQUE` (`rg_paciente`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
-
-/*Data for the table `paciente` */
-
-insert  into `paciente`(`cod_paciente`,`nome_paciente`,`rg_paciente`,`cpf_paciente`,`celular_paciente`,`telefone_paciente`,`email_paciente`,`lugadouro_paciente`,`cep_paciente`,`estado_paciente`,`cidade_paciente`,`sexo_paciente`,`bairro_paciente`,`data_nascimento`) values (1,'VINICIUS ARAUJO ALVES','362313209','43423814861','11951459647','1125847834','VINICIUS_ALVES2704@LIVE.COM','RUA VISTOSA DA MADRE DE DEUS, 390','08180110','SP','SÃO PAULO','MASCULINO','JD. HELENA','2000-01-01'),(8,'JEFERSON GONÇALVES SILVÉRIO','365214589','12565232591','11954687854','1125865412','JEFITA@HOTMAIL.COM','RUA DAS MAGOAS, 45 - APTO 5','45214-410','SP','MAUA','MASCULINO','CENTRO','1980-11-20'),(9,'VANDERLEI TERTO ALVES','332654789','12966163801','11963922945','1125847834','VANDERLEI_ALVES@HOTMAIL.COM','RUA VISTOSA DA MADRE DE DEUS, 390','08180110','SP','SÃO PAULO','MASCULINO','JD. HELENA','2000-01-01'),(10,'ANDRE','1234544','1234567','113124','1243132421','ANDR@.COM','PEDROSO','120232392','SP','SAO PAULO','MASCULINO','SAO MIGUEL','1988-11-29'),(11,'bruno','656465346','3456544534','321535134','2413525','bruno@.com','Pedroso','1323123','SP','sao paulo','MASCULINO','sao miguel','1988-02-13'),(12,'andre','54321','12345','12313134','2314124','jsdncvavbahkbv','kjafoiwehnoigfjl','12313','ES','saopaulo','MASCULINO','jnvdsajfnjlsav c','2015-12-02'),(13,'andre','34242342','232343243','11976117269','','','pedroso da silva ','08080090','SP','sp','MASCULINO','pq paulistano','1988-11-29');
-
-/*Table structure for table `pedido` */
-
-DROP TABLE IF EXISTS `pedido`;
-
-CREATE TABLE `pedido` (
-  `cod_pedido` int(5) NOT NULL,
-  `cod_fornecedor` int(5) DEFAULT NULL,
-  `valor` double DEFAULT NULL,
-  `status` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`cod_pedido`),
-  KEY `fornec` (`cod_fornecedor`),
-  CONSTRAINT `fornec` FOREIGN KEY (`cod_fornecedor`) REFERENCES `fornecedor` (`cod_fornecedor`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-/*Data for the table `pedido` */
-
-insert  into `pedido`(`cod_pedido`,`cod_fornecedor`,`valor`,`status`) values (1,2,146,0),(2,4,24,0),(3,4,35,0),(4,4,107.5,0),(5,NULL,NULL,0);
-
-/*Table structure for table `procedimento` */
-
-DROP TABLE IF EXISTS `procedimento`;
-
-CREATE TABLE `procedimento` (
-  `cod_procedimento` int(11) NOT NULL AUTO_INCREMENT,
-  `ds_procedimento` varchar(45) DEFAULT NULL,
-  `valor` double DEFAULT NULL,
-  `cod_usuario` int(11) DEFAULT NULL,
-  PRIMARY KEY (`cod_procedimento`),
-  KEY `cod_usuario_idx` (`cod_usuario`),
-  CONSTRAINT `cod_usuario` FOREIGN KEY (`cod_usuario`) REFERENCES `usuario` (`cod_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
-
-/*Data for the table `procedimento` */
-
-insert  into `procedimento`(`cod_procedimento`,`ds_procedimento`,`valor`,`cod_usuario`) values (1,'CANAL',900,1),(2,'IMPLANTE',1500,1),(3,'EXTRAÇÃO',250,1),(4,'ABTURAÇÃO',400,4),(5,'CLAREAMENTO',1000,4),(6,'RASPAGEM',500,4),(7,'RESTAURAÇÃO',500,4),(8,'PRÓTESE EM RESINA',350,4),(9,'CONSULTA DE URGÊNCIA',35,4),(10,'CONTROLE DE CÁRIE',9.1,4),(11,'RESTAURAÇÃO EM IONÔMERO DE VIDRO',34.8,4),(12,'RESTAURAÇÃO EM RESINA FOTOPOLIMERIZÁVEL',50,4),(13,'RESTAURAÇÃO DE AMÁLGAMA',57.3,4);
-
-/*Table structure for table `produto` */
-
-DROP TABLE IF EXISTS `produto`;
-
-CREATE TABLE `produto` (
-  `cod_produto` int(5) NOT NULL AUTO_INCREMENT,
-  `descricao` varchar(40) DEFAULT NULL,
-  `cod_barras` bigint(20) DEFAULT NULL,
-  `cod_tipoproduto` int(1) DEFAULT NULL,
-  `cod_fornecedor` int(11) DEFAULT NULL,
-  `embalagem` varchar(10) DEFAULT NULL,
-  `unidade` varchar(2) DEFAULT NULL,
-  `cod_usuario` int(11) DEFAULT NULL,
-  PRIMARY KEY (`cod_produto`),
-  KEY `cod_tipoproduto_idx` (`cod_tipoproduto`),
-  KEY `cod_fornecedor_idx` (`cod_fornecedor`),
-  KEY `cod_usuario_produt_idx` (`cod_usuario`),
-  CONSTRAINT `cod_fornecedor` FOREIGN KEY (`cod_fornecedor`) REFERENCES `fornecedor` (`cod_fornecedor`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `cod_tipoproduto` FOREIGN KEY (`cod_tipoproduto`) REFERENCES `produto_tipo` (`cod_tipoproduto`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `cod_usuario_produt` FOREIGN KEY (`cod_usuario`) REFERENCES `usuario` (`cod_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-
-/*Data for the table `produto` */
-
-insert  into `produto`(`cod_produto`,`descricao`,`cod_barras`,`cod_tipoproduto`,`cod_fornecedor`,`embalagem`,`unidade`,`cod_usuario`) values (1,'COPO DESCARTAVEL 200ML',4015000090711,2,4,'50X500','UN',1),(2,'COPO DESCARTEVEL 500ML',4015000090811,2,4,'10X500','UN',5),(3,'COPO DESCARTEVEL 300ML',4015000090611,2,4,'10X300','UN',5);
-
-/*Table structure for table `produto_tipo` */
-
-DROP TABLE IF EXISTS `produto_tipo`;
-
-CREATE TABLE `produto_tipo` (
-  `cod_tipoproduto` int(1) NOT NULL,
-  `descricao` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`cod_tipoproduto`)
+CREATE TABLE `itenspedido` (
+  `npedido` int(10) DEFAULT NULL,
+  `produto` varchar(50) DEFAULT NULL,
+  `preco` float(5,2) DEFAULT NULL,
+  `qtde` int(3) DEFAULT NULL,
+  `total` float(5,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `produto_tipo` */
+/*Data for the table `itenspedido` */
 
-insert  into `produto_tipo`(`cod_tipoproduto`,`descricao`) values (1,'MEDICAMENTO'),(2,'CONSUMO'),(3,'CIRÚRGICO');
+insert  into `itenspedido`(`npedido`,`produto`,`preco`,`qtde`,`total`) values (6,'Meio a Meio de Pizza mussarela  e Atum',28.00,1,28.00),(6,'Meio a Meio de Pizza mussarela  e Atum',32.00,1,32.00),(8,'Atum',32.00,1,32.00),(13,'Meio a Meio de Pizza Calabresa e Pizza Calabresa',32.00,1,32.00),(14,'Refrigerante 300ML',5.99,1,5.99),(15,'Refrigerante 300ML',5.99,1,5.99),(17,'Meio a Meio de Pizza Calabresa e Pizza Calabresa',0.00,1,25.00),(20,'Meio a Meio de Pizza Calabresa e Pizza Calabresa',0.00,1,25.00),(22,'Meio a Meio de Atum e Pizza Calabresa',32.00,1,32.00),(23,'Meio a Meio de Pizza mussarela  e Pizza Calabresa',28.00,1,28.00),(23,'Atum',32.00,1,32.00),(23,'Refrigerante 300ML',5.99,1,5.99),(24,'Atum',32.00,1,32.00),(24,'Meio a Meio de Pizza Calabresa e Pizza mussarela ',28.00,1,28.00),(31,'Refrigerante 300ML',5.99,1,5.99),(33,'Atum',32.00,1,32.00),(37,'Atum',32.00,1,32.00),(38,'Pizza mussarela ',28.00,1,28.00),(39,'Pizza mussarela ',28.00,1,28.00),(40,'Pizza Calabresa',25.00,1,25.00),(41,'Pizza Calabresa',25.00,1,25.00),(42,'Refrigerante 300ML',5.99,1,5.99),(43,'Pizza Calabresa',25.00,1,25.00),(44,'Pizza mussarela ',28.00,1,28.00),(45,'Pizza Calabresa',25.00,1,25.00),(46,'Pizza Calabresa',25.00,1,25.00),(47,'Meio a Meio de Pizza Calabresa e Pizza mussarela ',28.00,1,28.00),(48,'Pizza Calabresa',25.00,1,25.00),(49,'Pizza mussarela ',28.00,1,28.00),(50,'Pizza mussarela ',28.00,1,28.00),(51,'Pizza Calabresa',25.00,1,25.00),(52,'Pizza Calabresa',25.00,1,25.00),(53,'Pizza Calabresa',25.00,1,25.00),(54,'Pizza Calabresa',25.00,1,25.00),(55,'Pizza Calabresa',25.00,1,25.00),(56,'Refrigerante 300ML',5.99,1,5.99),(57,'Pizza mussarela ',28.00,1,28.00),(58,'Refrigerante 300ML',5.99,1,5.99),(59,'Meio a Meio de Pizza mussarela  e Pizza Calabresa',28.00,1,28.00),(60,'Pizza Calabresa',25.00,1,25.00),(61,'Pizza mussarela ',28.00,1,28.00),(62,'Pizza Calabresa',25.00,1,25.00),(63,'Pizza Calabresa',25.00,1,25.00),(64,'Atum',32.00,1,32.00),(65,'Pizza Calabresa',25.00,1,25.00),(66,'Pizza Calabresa',25.00,1,25.00),(67,'Pizza Calabresa',25.00,1,25.00),(68,'Pizza Calabresa',25.00,1,25.00),(69,'Pizza mussarela ',28.00,1,28.00),(70,'Refrigerante 300ML',5.99,1,5.99),(71,'Pizza mussarela ',28.00,1,28.00),(72,'Pizza Calabresa',25.00,1,25.00),(73,'Pizza Calabresa',25.00,1,25.00),(74,'Pizza mussarela ',28.00,1,28.00),(75,'Pizza mussarela ',28.00,1,28.00),(76,'Pizza Calabresa',25.00,1,25.00),(77,'Pizza mussarela ',28.00,1,28.00),(78,'Pizza mussarela ',28.00,1,28.00),(79,'Pizza Calabresa',25.00,1,25.00),(80,'Pizza Calabresa',25.00,1,25.00),(81,'Pizza mussarela ',28.00,1,28.00),(82,'Pizza mussarela ',28.00,1,28.00),(83,'Pizza Calabresa',25.00,1,25.00),(84,'Pizza mussarela ',28.00,1,28.00),(85,'Pizza Calabresa',25.00,1,25.00),(86,'Refrigerante 300ML',5.99,1,5.99),(87,'Pizza mussarela ',28.00,1,28.00),(87,'Refrigerante 300ML',5.99,1,5.99),(88,'Pizza mussarela ',28.00,1,28.00),(88,'Meio a Meio de Pizza Calabresa e Pizza mussarela ',28.00,1,28.00),(89,'Refrigerante 300ML',5.99,1,5.99);
 
-/*Table structure for table `professor` */
+/*Table structure for table `produtos` */
 
-DROP TABLE IF EXISTS `professor`;
+DROP TABLE IF EXISTS `produtos`;
 
-CREATE TABLE `professor` (
-  `idprof` int(11) NOT NULL AUTO_INCREMENT,
-  `cpf` varchar(11) DEFAULT NULL,
-  `nome` varchar(50) DEFAULT NULL,
-  `sexo` varchar(1) DEFAULT NULL,
-  `salario` float DEFAULT NULL,
-  PRIMARY KEY (`idprof`)
+CREATE TABLE `produtos` (
+  `codigoproduto` varchar(5) NOT NULL,
+  `tipoproduto` varchar(20) DEFAULT NULL,
+  `descricao` varchar(50) DEFAULT NULL,
+  `ingredientes` varchar(50) DEFAULT NULL,
+  `unidmedida` varchar(2) DEFAULT NULL,
+  `estocavel` varchar(3) DEFAULT NULL,
+  `qtdeminima` int(6) DEFAULT NULL,
+  `acabadoprima` varchar(25) DEFAULT NULL,
+  `valor` float(6,2) DEFAULT NULL,
+  `qtdeestoque` int(6) DEFAULT NULL,
+  `produtovenda` varchar(3) DEFAULT NULL,
+  `dataregistro` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`codigoproduto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-/*Data for the table `professor` */
+/*Data for the table `produtos` */
+
+insert  into `produtos`(`codigoproduto`,`tipoproduto`,`descricao`,`ingredientes`,`unidmedida`,`estocavel`,`qtdeminima`,`acabadoprima`,`valor`,`qtdeestoque`,`produtovenda`,`dataregistro`) values ('121','Refrigerante','Refrigerante 300ML','','LT','SIM',5,'Produto Acabado',5.99,100,'SIM',NULL),('31','Pizza','Pizza mussarela ','queijo queijo e mais queijo','UN','NAO',0,'Produto Acabado',28.00,0,'SIM',NULL),('34','Pizza','Pizza Calabresa','calabreza , fermento','UN','NAO',0,'Produto Acabado',25.00,0,'SIM',NULL),('75','Pizza','Atum','atum','UN','-',0,'Produto Acabado',32.00,0,'SIM',NULL);
 
 /*Table structure for table `usuario` */
 
 DROP TABLE IF EXISTS `usuario`;
 
 CREATE TABLE `usuario` (
-  `cod_usuario` int(11) NOT NULL AUTO_INCREMENT,
-  `permissao` int(11) NOT NULL DEFAULT '0',
-  `login` varchar(45) NOT NULL,
-  `senha` varchar(45) NOT NULL DEFAULT 'PADRAO',
-  `setor` varchar(45) DEFAULT NULL,
-  `nome` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`cod_usuario`),
-  UNIQUE KEY `login_UNIQUE` (`login`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `codigo` int(30) DEFAULT NULL,
+  `nome` varchar(60) DEFAULT NULL,
+  `login` varchar(40) NOT NULL,
+  `senha` varchar(60) DEFAULT NULL,
+  `permissao` varchar(4) DEFAULT NULL,
+  `logado` char(2) DEFAULT NULL,
+  `cpfFun` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`login`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `usuario` */
 
-insert  into `usuario`(`cod_usuario`,`permissao`,`login`,`senha`,`setor`,`nome`) values (1,1,'ADMIN','ADMIN','ADMIN','ADMIN'),(2,1,'VINICIUS','ADMIN','T.I.','VINICIUS ARAUJO ALVES'),(3,1,'DENTISTA','ADMIN','DENTISTA','JOSÉ EDUARDO SILVÉRIO'),(4,2,'RECEPCAO','RECEPCAO','RECEPCAO','ISALTINA MARIA DOS SANTOS'),(5,3,'COMPRAS','COMPRAS','COMPRAS','GUSTAVO SANTOS'),(6,1,'AFONSO.PAVAO','ADMIN','ADMIN','AFONSO MARIA PAVÃO'),(7,4,'ANDRE.SILVA','ESTOQUE','ESTOQUE','ANDRE SILVA GONÇALVES');
+insert  into `usuario`(`codigo`,`nome`,`login`,`senha`,`permissao`,`logado`,`cpfFun`) values (NULL,NULL,'1','1','1','s','455.365.058-40'),(NULL,NULL,'teste','teste','00','n','563.553.262-43');
+
+/*Table structure for table `venda` */
+
+DROP TABLE IF EXISTS `venda`;
+
+CREATE TABLE `venda` (
+  `npedido` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `telefone` varchar(13) DEFAULT NULL,
+  `total` float(5,2) DEFAULT NULL,
+  `formaPagamento` varchar(20) DEFAULT NULL,
+  `observacao` varchar(50) DEFAULT NULL,
+  `data` varchar(10) DEFAULT NULL,
+  `valorrecebido` float(5,2) DEFAULT NULL,
+  `troco` float(5,2) DEFAULT NULL,
+  `hora` varchar(8) DEFAULT NULL,
+  `tipopedido` varchar(20) DEFAULT NULL,
+  `situacaoEntrega` varchar(20) DEFAULT NULL,
+  `hrsaida` varchar(8) DEFAULT NULL,
+  `horaentrega` varchar(8) DEFAULT NULL,
+  `motoboy` varchar(50) DEFAULT NULL,
+  `dataformat` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`npedido`)
+) ENGINE=InnoDB AUTO_INCREMENT=90 DEFAULT CHARSET=utf8;
+
+/*Data for the table `venda` */
+
+insert  into `venda`(`npedido`,`telefone`,`total`,`formaPagamento`,`observacao`,`data`,`valorrecebido`,`troco`,`hora`,`tipopedido`,`situacaoEntrega`,`hrsaida`,`horaentrega`,`motoboy`,`dataformat`) values (21,'',25.00,'Cartão de Crédito','','29-09-2015',0.00,0.00,'02:46:04','Pedido Entrega',NULL,NULL,NULL,NULL,NULL),(22,'25858180',32.00,'Cartão de Crédito','','29-09-2015',0.00,0.00,'02:46:51','Pedido Entrega','Saiu Para Entregar','12:28:16','','Paulo',NULL),(23,'25853775',65.99,'Dinheiro','calotero','29-09-2015',100.00,34.01,'03:15:56','Pedido Entrega','Não Entregue','12:33:02','12:33:05','william',NULL),(24,'25858180',60.00,'Dinheiro','','29-09-2015',100.00,40.00,'03:56:15','Pedido Entrega','Cancelado','12:43:26','12:43:24','Paulo',NULL),(25,'',25.00,'Cartão de Débito','','07-10-2015',0.00,0.00,'03:29:22','Pedido Entrega','Aberto',NULL,NULL,NULL,NULL),(26,'',28.00,'Cartão de Crédito','','2015/10/07',0.00,0.00,'03:33:17','Pedido Balcao','Entrega OK',NULL,'03:33:36','',NULL),(27,'',28.00,'Cartão de Crédito','','07-10-2015',0.00,0.00,'03:34:22','Pedido Balcao','Entrega OK',NULL,'03:34:35','',NULL),(28,'',25.00,'Cartão de Débito','','07-10-2015',0.00,0.00,'03:35:13','Pedido Balcao','Aberto',NULL,NULL,NULL,NULL),(29,'25858180',28.00,'Cartão de Débito','','07-10-2015',0.00,0.00,'03:48:38','Pedido Entrega','Aberto',NULL,NULL,NULL,NULL),(30,'',25.00,'Cartão de Crédito','','14/10/2015',0.00,0.00,'08:48:33','Pedido Balcao','Aberto',NULL,NULL,NULL,NULL),(31,'',5.99,'Cartão de Crédito','','14/10/2015',0.00,0.00,'08:51:22','Pedido Balcao','Aberto',NULL,NULL,NULL,NULL),(32,'',28.00,'Cartão de Crédito','','14/10/2015',0.00,0.00,'08:51:35','Pedido Balcao','Aberto',NULL,NULL,NULL,NULL),(33,'',32.00,'Cartão de Crédito','','14/10/2015',0.00,0.00,'09:22:42','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/14'),(34,'25858180',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'04:49:34','Pedido Entrega','Aberto',NULL,NULL,NULL,'2015/10/24'),(35,'25858180',25.00,'Dinheiro','','24/10/2015',50.00,25.00,'04:50:54','Pedido Entrega','Aberto',NULL,NULL,NULL,'2015/10/24'),(36,'25858180',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'05:13:11','Pedido Entrega','Aberto',NULL,NULL,NULL,'2015/10/24'),(37,'25858180',32.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'05:16:54','Pedido Entrega','Aberto',NULL,NULL,NULL,'2015/10/24'),(38,'25858180',28.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'05:25:04','Pedido Entrega','Aberto',NULL,NULL,NULL,'2015/10/24'),(39,'25858180',28.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'05:26:46','Pedido Entrega','Aberto',NULL,NULL,NULL,'2015/10/24'),(40,'25858180',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'05:28:13','Pedido Entrega','Aberto',NULL,NULL,NULL,'2015/10/24'),(41,'',25.00,'Cartão de Débito','','24/10/2015',0.00,0.00,'05:29:37','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(42,'',5.99,'Cartão de Crédito','','24/10/2015',0.00,0.00,'05:30:27','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(43,'',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'05:31:28','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(44,'',28.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'05:34:56','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(45,'',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'05:35:51','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(46,'',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'05:36:59','Pedido Entrega','Aberto',NULL,NULL,NULL,'2015/10/24'),(47,'25858180',28.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'05:38:42','Pedido Entrega','Aberto',NULL,NULL,NULL,'2015/10/24'),(48,'',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'05:39:26','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(49,'',28.00,'Cartão de Débito','','24/10/2015',0.00,0.00,'05:41:52','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(50,'',28.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'05:47:07','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(51,'',25.00,'Cartão de Débito','','24/10/2015',0.00,0.00,'05:47:58','Pedido Entrega','Aberto',NULL,NULL,NULL,'2015/10/24'),(52,'',25.00,'Cartão de Débito','','24/10/2015',0.00,0.00,'05:48:56','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(53,'',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'05:53:46','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(54,'',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'05:56:22','Pedido Entrega','Aberto',NULL,NULL,NULL,'2015/10/24'),(55,'',25.00,'Cartão de Débito','','24/10/2015',0.00,0.00,'06:12:37','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(56,'',5.99,'Cartão de Crédito','','24/10/2015',0.00,0.00,'06:13:55','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(57,'',28.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'06:14:36','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(58,'',5.99,'Cartão de Crédito','','24/10/2015',0.00,0.00,'06:24:04','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(59,'',28.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'06:24:29','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(60,'',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'06:24:49','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(61,'',28.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'06:31:46','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(62,'',25.00,'Cartão de Débito','','24/10/2015',0.00,0.00,'06:32:44','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(63,'',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'06:44:00','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(64,'',32.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'06:58:09','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(65,'',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:06:33','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(66,'',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:13:06','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(67,'',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:14:23','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(68,'',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:27:02','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(69,'',28.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:27:52','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(70,'',5.99,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:28:51','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(71,'',28.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:30:51','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(72,'',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:31:24','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(73,'',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:32:17','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(74,'',28.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:32:44','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(75,'',28.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:34:55','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(76,'',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:36:57','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(77,'',28.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:38:10','Pedido Entrega','Aberto',NULL,NULL,NULL,'2015/10/24'),(78,'',28.00,'Cartão de Débito','','24/10/2015',0.00,0.00,'07:41:13','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(79,'',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:41:30','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(80,'',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:41:55','Pedido Entrega','Aberto',NULL,NULL,NULL,'2015/10/24'),(81,'',28.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:48:11','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(82,'',28.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:48:58','Pedido Entrega','Aberto',NULL,NULL,NULL,'2015/10/24'),(83,'',25.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:49:23','Pedido Entrega','Aberto',NULL,NULL,NULL,'2015/10/24'),(84,'',28.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:50:30','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(85,'',25.00,'Cartão de Débito','','24/10/2015',0.00,0.00,'07:51:01','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(86,'',5.99,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:52:56','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(87,'',33.99,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:56:02','Pedido Balcao','Aberto',NULL,NULL,NULL,'2015/10/24'),(88,'',56.00,'Cartão de Crédito','','24/10/2015',0.00,0.00,'07:56:29','Pedido Entrega','Aberto',NULL,NULL,NULL,'2015/10/24'),(89,'25858180',5.99,'Cartão de Débito','','25/10/2015',0.00,0.00,'01:34:57','Pedido Entrega','Aberto',NULL,NULL,NULL,'2015/10/25');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
