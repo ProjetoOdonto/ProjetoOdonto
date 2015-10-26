@@ -46,7 +46,7 @@ public class Banco {
             String serverName = "localhost";
             String mydatabase = "odontomax";
             String username = "root";
-            String password = "root"; //MUDAR SENHA
+            String password = ""; //MUDAR SENHA
             String driverName = "com.mysql.jdbc.Driver"; 
             Class.forName(driverName);
             String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
