@@ -5,7 +5,7 @@ public class conectaBanco {
    private String JDBC_DRIVER = "com.mysql.jdbc.Driver";
    private String DB_URL ="jdbc:mysql://localhost/odontomax";
    private String DB_USER = "root";
-   private String DB_PASS = "";
+   private String DB_PASS = "root";
 
     public String JDBC_DRIVER(){
         return JDBC_DRIVER;
