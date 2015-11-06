@@ -27,7 +27,6 @@ public class CadastroPaciente extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         btn_novoregistro = new javax.swing.JButton();
         btn_manutencao = new javax.swing.JButton();
-        btn_consultar = new javax.swing.JButton();
         painel_usuario1 = new javax.swing.JPanel();
         label_nomeusuario = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -97,13 +96,6 @@ public class CadastroPaciente extends javax.swing.JFrame {
             }
         });
 
-        btn_consultar.setText("Visualizar Cadastro");
-        btn_consultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_consultarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -112,9 +104,8 @@ public class CadastroPaciente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_novoregistro, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_manutencao, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,13 +114,11 @@ public class CadastroPaciente extends javax.swing.JFrame {
                 .addComponent(btn_novoregistro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_manutencao, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_consultar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(10, 125, 350, 210);
+        jPanel1.setBounds(10, 125, 250, 170);
 
         painel_usuario1.setBackground(new java.awt.Color(255, 204, 0));
         painel_usuario1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 204, 0)), "Usuário", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 204, 0))); // NOI18N
@@ -215,12 +204,6 @@ public class CadastroPaciente extends javax.swing.JFrame {
         c.setVisible(true);
     }//GEN-LAST:event_btn_manutencaoActionPerformed
 
-    private void btn_consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultarActionPerformed
-        // TODO add your handling code here:
-        CadastroPaciente_Visualizar c = new CadastroPaciente_Visualizar();
-        c.setVisible(true);
-    }//GEN-LAST:event_btn_consultarActionPerformed
-
     public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -229,7 +212,6 @@ public class CadastroPaciente extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_consultar;
     private javax.swing.JButton btn_manutencao;
     private javax.swing.JButton btn_novoregistro;
     private javax.swing.JButton btn_voltar;
