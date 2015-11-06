@@ -114,14 +114,14 @@ public class Acesso extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Usuário:");
         Painel.add(jLabel1);
-        jLabel1.setBounds(22, 80, 40, 14);
+        jLabel1.setBounds(30, 90, 70, 30);
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Senha: ");
         Painel.add(jLabel2);
-        jLabel2.setBounds(30, 104, 37, 30);
+        jLabel2.setBounds(30, 130, 70, 30);
         Painel.add(txt_senha);
-        txt_senha.setBounds(70, 110, 239, 20);
+        txt_senha.setBounds(100, 130, 239, 30);
 
         txt_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +129,7 @@ public class Acesso extends javax.swing.JFrame {
             }
         });
         Painel.add(txt_usuario);
-        txt_usuario.setBounds(70, 80, 239, 20);
+        txt_usuario.setBounds(100, 90, 239, 30);
 
         btn_entrar.setBackground(new java.awt.Color(204, 204, 204));
         btn_entrar.setForeground(new java.awt.Color(255, 153, 51));
@@ -145,7 +145,7 @@ public class Acesso extends javax.swing.JFrame {
             }
         });
         Painel.add(btn_entrar);
-        btn_entrar.setBounds(330, 80, 110, 50);
+        btn_entrar.setBounds(370, 100, 110, 50);
 
         jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 153, 0));
