@@ -91,6 +91,7 @@ public class Acesso extends javax.swing.JFrame {
         txt_usuario = new javax.swing.JTextField();
         btn_entrar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -108,18 +109,27 @@ public class Acesso extends javax.swing.JFrame {
         Painel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Painel.setName(""); // NOI18N
         Painel.setOpaque(false);
+        Painel.setLayout(null);
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Usuário:");
+        Painel.add(jLabel1);
+        jLabel1.setBounds(22, 80, 40, 14);
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Senha: ");
+        Painel.add(jLabel2);
+        jLabel2.setBounds(30, 104, 37, 30);
+        Painel.add(txt_senha);
+        txt_senha.setBounds(70, 110, 239, 20);
 
         txt_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_usuarioActionPerformed(evt);
             }
         });
+        Painel.add(txt_usuario);
+        txt_usuario.setBounds(70, 80, 239, 20);
 
         btn_entrar.setBackground(new java.awt.Color(204, 204, 204));
         btn_entrar.setForeground(new java.awt.Color(255, 153, 51));
@@ -134,54 +144,27 @@ public class Acesso extends javax.swing.JFrame {
                 btn_entrarKeyPressed(evt);
             }
         });
+        Painel.add(btn_entrar);
+        btn_entrar.setBounds(330, 80, 110, 50);
 
         jLabel3.setFont(new java.awt.Font("Segoe Print", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 153, 0));
         jLabel3.setText("Sistema OdontoMax");
-
-        javax.swing.GroupLayout PainelLayout = new javax.swing.GroupLayout(Painel);
-        Painel.setLayout(PainelLayout);
-        PainelLayout.setHorizontalGroup(
-            PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PainelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PainelLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel3))
-                .addContainerGap(93, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        PainelLayout.setVerticalGroup(
-            PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PainelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txt_senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(btn_entrar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        Painel.add(jLabel3);
+        jLabel3.setBounds(170, 20, 243, 44);
 
         getContentPane().add(Painel);
-        Painel.setBounds(10, 220, 403, 210);
+        Painel.setBounds(10, 170, 520, 210);
+
+        jButton1.setForeground(new java.awt.Color(255, 153, 51));
+        jButton1.setText("Esqueci a Senha");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(20, 400, 140, 40);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Odontomax/bg.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -232,6 +215,13 @@ public class Acesso extends javax.swing.JFrame {
          }
     }//GEN-LAST:event_formKeyPressed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        EsqueciSenha es = new EsqueciSenha();
+        
+        es.setVisible(true);  
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -269,6 +259,7 @@ public class Acesso extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Painel;
     private javax.swing.JButton btn_entrar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
