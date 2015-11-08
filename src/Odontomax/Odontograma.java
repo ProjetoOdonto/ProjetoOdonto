@@ -67,9 +67,6 @@ GerarPdf pdf = new GerarPdf();
         btn_buscar_pac = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela_pesquisa_paciente = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -84,7 +81,6 @@ GerarPdf pdf = new GerarPdf();
         txtValor = new javax.swing.JTextField();
         btnImprimir = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         btn_voltar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
@@ -192,18 +188,6 @@ GerarPdf pdf = new GerarPdf();
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(10, 110, 529, 90);
-
-        jButton2.setText("Selecionar");
-        jPanel1.add(jButton2);
-        jButton2.setBounds(30, 210, 120, 40);
-
-        jButton6.setText("Limpar");
-        jPanel1.add(jButton6);
-        jButton6.setBounds(170, 210, 90, 40);
-
-        jButton7.setText("Cancelar");
-        jPanel1.add(jButton7);
-        jButton7.setBounds(430, 210, 100, 40);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Odontograma"));
 
@@ -325,8 +309,6 @@ GerarPdf pdf = new GerarPdf();
             }
         });
 
-        jButton4.setText("Cancelar");
-
         btn_voltar.setText("Voltar");
         btn_voltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -351,10 +333,9 @@ GerarPdf pdf = new GerarPdf();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
                         .addComponent(jButton3)
-                        .addGap(26, 26, 26)
-                        .addComponent(jButton4)
-                        .addGap(26, 26, 26)
+                        .addGap(18, 18, 18)
                         .addComponent(btn_voltar)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
@@ -372,7 +353,6 @@ GerarPdf pdf = new GerarPdf();
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(btn_voltar)
-                    .addComponent(jButton4)
                     .addComponent(jButton1))
                 .addGap(149, 149, 149))
         );
@@ -446,9 +426,9 @@ GerarPdf pdf = new GerarPdf();
                         .addComponent(painel_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -494,7 +474,7 @@ GerarPdf pdf = new GerarPdf();
          
               String msg1 = "Produtos recuperados com sucesso";
         String msg2 = "Erro ao Recuperar Produtos";
-        String vsql = "SELECT ds_procedimento from procedimento where cod_procedimento = "+cod+"";
+        String vsql = "SELECT ds_procedimento from hprocede where codpaciente = "+cod+"";
 
 
         bf.tabelaClientes(vsql, msg1, msg2, hprocedimentos);
@@ -535,7 +515,22 @@ GerarPdf pdf = new GerarPdf();
 
      
             ba.gravarOdonto(cod, codprocede, dsprocede, detalhes, valor);
+            
+            
+             Object obj10 = (tabela_pesquisa_paciente.getValueAt(tabela_pesquisa_paciente.getSelectedRow(), 0));  //coluna 0  
+            String cod5 = obj10.toString();
+             
+            
+            
+         
+              String msg1 = "Produtos recuperados com sucesso";
+        String msg2 = "Erro ao Recuperar Produtos";
+        String vsql = "SELECT ds_procedimento from hprocede where codpaciente = "+cod5+"";
 
+
+        bf.tabelaClientes(vsql, msg1, msg2, hprocedimentos);
+            
+            
               
                 try {  
                 pdf.main(new String[]{cod,nome,codprocede,dsprocede,detalhes,valor}); 
@@ -588,11 +583,7 @@ GerarPdf pdf = new GerarPdf();
     private javax.swing.JButton btn_voltar;
     private javax.swing.JTable hprocedimentos;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
