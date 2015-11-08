@@ -123,6 +123,7 @@ public class CadastroPaciente_NovoRegistro extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("NOVO CADASTRO DE PACIENTE");
         setResizable(false);
+        getContentPane().setLayout(null);
 
         painel_usuario1.setBorder(javax.swing.BorderFactory.createTitledBorder("Usuário"));
 
@@ -161,6 +162,9 @@ public class CadastroPaciente_NovoRegistro extends javax.swing.JFrame {
                     .addComponent(label_setorusuario))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        getContentPane().add(painel_usuario1);
+        painel_usuario1.setBounds(10, 11, 274, 68);
 
         painel_dados.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados do Paciente"));
         painel_dados.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -388,12 +392,17 @@ public class CadastroPaciente_NovoRegistro extends javax.swing.JFrame {
                 .addComponent(jLabel12))
         );
 
+        getContentPane().add(painel_dados);
+        painel_dados.setBounds(10, 85, 617, 387);
+
         btn_novo.setText("Novo Registro");
         btn_novo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_novoActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_novo);
+        btn_novo.setBounds(290, 33, 101, 46);
 
         btn_cancelar1.setText("Cancelar Registro");
         btn_cancelar1.addActionListener(new java.awt.event.ActionListener() {
@@ -401,6 +410,8 @@ public class CadastroPaciente_NovoRegistro extends javax.swing.JFrame {
                 btn_cancelar1ActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_cancelar1);
+        btn_cancelar1.setBounds(401, 33, 117, 46);
 
         jButton1.setText("Concultar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -408,39 +419,8 @@ public class CadastroPaciente_NovoRegistro extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painel_dados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(painel_usuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_novo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_cancelar1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painel_usuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_novo, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_cancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(painel_dados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
-        );
+        getContentPane().add(jButton1);
+        jButton1.setBounds(528, 33, 103, 46);
 
         setSize(new java.awt.Dimension(704, 603));
         setLocationRelativeTo(null);
@@ -483,11 +463,13 @@ public class CadastroPaciente_NovoRegistro extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_salvarActionPerformed
 
     private void btn_cancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelar1ActionPerformed
-        // TODO add your handling code here:
+        
+        Cancelar();
+
     }//GEN-LAST:event_btn_cancelar1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         CadastroPaciente_Consultar c = new CadastroPaciente_Consultar(usuario,nome,setor);
+        CadastroPaciente_Consultar c = new CadastroPaciente_Consultar(usuario,nome,setor);
         c.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

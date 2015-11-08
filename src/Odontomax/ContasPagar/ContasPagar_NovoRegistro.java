@@ -101,7 +101,6 @@ public class ContasPagar_NovoRegistro extends javax.swing.JFrame {
         btn_novo = new javax.swing.JButton();
         btn_salvar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel21 = new javax.swing.JLabel();
         btn_voltar1 = new javax.swing.JButton();
         painel_usuario1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -252,9 +251,6 @@ public class ContasPagar_NovoRegistro extends javax.swing.JFrame {
         });
 
         jButton3.setText("Cancelar Registro");
-
-        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel21.setText("Incluir Nova Despesa");
 
         btn_voltar1.setText("Voltar");
         btn_voltar1.addActionListener(new java.awt.event.ActionListener() {
@@ -564,16 +560,13 @@ public class ContasPagar_NovoRegistro extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(painel_usuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel21)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btn_novo)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                                        .addComponent(btn_voltar1))))
+                                .addComponent(btn_novo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                                .addComponent(btn_voltar1))
                             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 34, Short.MAX_VALUE)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                        .addGap(0, 41, Short.MAX_VALUE)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -581,8 +574,7 @@ public class ContasPagar_NovoRegistro extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel21)
-                        .addGap(30, 30, 30)
+                        .addGap(59, 59, 59)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_novo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_voltar1, javax.swing.GroupLayout.Alignment.TRAILING)))
@@ -727,7 +719,6 @@ System.out.println(txt_situacao.getSelectedItem().toString());
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

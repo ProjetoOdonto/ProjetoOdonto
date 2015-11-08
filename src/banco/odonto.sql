@@ -1,6 +1,6 @@
 /*
-SQLyog Community v12.09 (64 bit)
-MySQL - 5.6.25 : Database - odontomax
+SQLyog Ultimate v9.51 
+MySQL - 5.6.26-log : Database - odontomax
 *********************************************************************
 */
 
@@ -15,6 +15,59 @@ MySQL - 5.6.25 : Database - odontomax
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`odontomax` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `odontomax`;
+
+/*Table structure for table `agendamentos` */
+
+DROP TABLE IF EXISTS `agendamentos`;
+
+CREATE TABLE `agendamentos` (
+  `cod_paciente` int(3) NOT NULL,
+  `nome_paciente` varchar(50) DEFAULT NULL,
+  `data` varchar(10) DEFAULT NULL,
+  `hora` varchar(5) DEFAULT NULL,
+  `tipoconsulta` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `agendamentos` */
+
+insert  into `agendamentos`(`cod_paciente`,`nome_paciente`,`data`,`hora`,`tipoconsulta`) values (1,'1','29/01/1995','10:15','Consulta de Rotina'),(1,'VINICIUS ARAUJO ALVES','24/34/3452','54:65','Tratamento'),(10,'ANDRE','  /  /    ','  :  ','Selecionar'),(9,'VANDERLEI TERTO ALVES','  /  /    ','  :  ','Selecionar'),(1,'VINICIUS ARAUJO ALVES','29/15/1151','21:21','Tratamento'),(11,'bruno','32/13/2112','21:12','Consulta de Rotina');
+
+/*Table structure for table `aluno` */
+
+DROP TABLE IF EXISTS `aluno`;
+
+CREATE TABLE `aluno` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `rgm` varchar(7) DEFAULT NULL,
+  `nome` varchar(80) DEFAULT NULL,
+  `curso` varchar(4) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `turma` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `aluno` */
+
+/*Table structure for table `despecas` */
+
+DROP TABLE IF EXISTS `despecas`;
+
+CREATE TABLE `despecas` (
+  `COD_DESPECAS` int(55) NOT NULL AUTO_INCREMENT,
+  `COD_FORNECEDOR` int(55) DEFAULT NULL,
+  `VALOR` double DEFAULT NULL,
+  `SITUACAO` varchar(10) DEFAULT NULL,
+  `DATA_LANCAMENTO` date DEFAULT NULL,
+  `DATA_EMISSAO` date DEFAULT NULL,
+  `DATA_VENCIMENTO` date DEFAULT NULL,
+  PRIMARY KEY (`COD_DESPECAS`),
+  KEY `FORNEC_DESPESA` (`COD_FORNECEDOR`),
+  CONSTRAINT `FORNEC_DESPESA` FOREIGN KEY (`COD_FORNECEDOR`) REFERENCES `fornecedor` (`cod_fornecedor`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+/*Data for the table `despecas` */
+
+insert  into `despecas`(`COD_DESPECAS`,`COD_FORNECEDOR`,`VALOR`,`SITUACAO`,`DATA_LANCAMENTO`,`DATA_EMISSAO`,`DATA_VENCIMENTO`) values (1,1,345,'pago','2015-09-10','2015-08-30','2015-09-03'),(3,1,35,'pago','0000-00-00','0000-00-00','0000-00-00');
 
 /*Table structure for table `fornecedor` */
 
@@ -35,11 +88,24 @@ CREATE TABLE `fornecedor` (
   PRIMARY KEY (`cod_fornecedor`),
   KEY `cod_usuario_idx` (`cod_usuario`),
   CONSTRAINT `cod_usuario_fornec` FOREIGN KEY (`cod_usuario`) REFERENCES `usuario` (`cod_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `fornecedor` */
 
 insert  into `fornecedor`(`cod_fornecedor`,`ds_fornecedor`,`cnpj`,`lugadouro`,`cep`,`bairro`,`cidade`,`estado`,`email`,`telefone`,`cod_usuario`) values (1,'TECNOPLAST MATERIAIS DESCARTAVEIS','05.569.214/0001-10','RUA SÃO JORGE, 653','08456110','TATUAPÉ','SÃO PAULO','SP','CONTATO@TECNOPLAST.COM.BR','1136658745',1),(2,'CENTRAL MEDICA MEDICAMENTOS','45.658.985/0002-84','RUA MONTE CARLO, 110','54125698','CENTRO','ARARAQUARA','SP','CENTRALMEDICA@CENTRALMEDICA.COM.BR','1933256498',5),(3,'QUALITA MEDICAMENTOS LTDA','01.546.547/0001-89','RUA SANTO AGOSTINHO, 444','54125658','CENTRO','COSMÓPOLIS','SP','ATENDIMENTO@QUALITA.COM.BR','1933247455',1),(4,'BRASCOOP DESCARTÁVEIS LTDA','65.547.897/0004-89','RUA DO GASÔMETRO, 154','03008000','BRÁS','SÃO PAULO','SP','BRASCOOP@BRASCOOP.COM.BR','1133275199',1);
+
+/*Table structure for table `hprocede` */
+
+DROP TABLE IF EXISTS `hprocede`;
+
+CREATE TABLE `hprocede` (
+  `ds_procedimento` varchar(50) DEFAULT NULL,
+  `codpaciente` varchar(3) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `hprocede` */
+
+insert  into `hprocede`(`ds_procedimento`,`codpaciente`) values ('EXTRAÇÃO','12'),('ABTURAÇÃO','12'),('IMPLANTE','12'),('CANAL','12'),('RESTAURAÇÃO DE AMÁLGAMA','12'),('RESTAURAÇÃO EM IONÔMERO DE VIDRO','12');
 
 /*Table structure for table `item` */
 
@@ -57,7 +123,21 @@ CREATE TABLE `item` (
 
 /*Data for the table `item` */
 
-insert  into `item`(`cod_pedido`,`cod_produto`,`quantidade`) values (6,3,50),(6,2,40),(6,1,30);
+insert  into `item`(`cod_pedido`,`cod_produto`,`quantidade`) values (1,3,13),(1,2,14),(1,2,9),(2,1,6),(3,2,5),(4,1,50),(4,3,30);
+
+/*Table structure for table `odontograma` */
+
+DROP TABLE IF EXISTS `odontograma`;
+
+CREATE TABLE `odontograma` (
+  `cod_usuario` varchar(50) DEFAULT NULL,
+  `codprocede` varchar(50) DEFAULT NULL,
+  `ds_procedimento` varchar(50) DEFAULT NULL,
+  `detalhes` varchar(50) DEFAULT NULL,
+  `valor` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `odontograma` */
 
 /*Table structure for table `paciente` */
 
@@ -81,11 +161,11 @@ CREATE TABLE `paciente` (
   PRIMARY KEY (`cod_paciente`),
   UNIQUE KEY `cpf_paciente_UNIQUE` (`cpf_paciente`),
   UNIQUE KEY `rg_paciente_UNIQUE` (`rg_paciente`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 /*Data for the table `paciente` */
 
-insert  into `paciente`(`cod_paciente`,`nome_paciente`,`rg_paciente`,`cpf_paciente`,`celular_paciente`,`telefone_paciente`,`email_paciente`,`lugadouro_paciente`,`cep_paciente`,`estado_paciente`,`cidade_paciente`,`sexo_paciente`,`bairro_paciente`,`data_nascimento`) values (1,'VINICIUS ARAUJO ALVES','362313209','43423814861','11951459647','1125847834','VINICIUS_ALVES2704@LIVE.COM','RUA VISTOSA DA MADRE DE DEUS, 390','08180110','SP','SÃO PAULO','MASCULINO','JD. HELENA','2000-01-01'),(8,'JEFERSON GONÇALVES SILVÉRIO','365214589','12565232591','11954687854','1125865412','JEFITA@HOTMAIL.COM','RUA DAS MAGOAS, 45 - APTO 5','45214-410','SP','MAUA','MASCULINO','CENTRO','1980-11-20'),(9,'VANDERLEI TERTO ALVES','332654789','12966163801','11963922945','1125847834','VANDERLEI_ALVES@HOTMAIL.COM','RUA VISTOSA DA MADRE DE DEUS, 390','08180110','SP','SÃO PAULO','MASCULINO','JD. HELENA','2000-01-01');
+insert  into `paciente`(`cod_paciente`,`nome_paciente`,`rg_paciente`,`cpf_paciente`,`celular_paciente`,`telefone_paciente`,`email_paciente`,`lugadouro_paciente`,`cep_paciente`,`estado_paciente`,`cidade_paciente`,`sexo_paciente`,`bairro_paciente`,`data_nascimento`) values (8,'JEFERSON GONÇALVES SILVÉRIO','365214589','12565232591','11954687854','1125865412','JEFITA@HOTMAIL.COM','RUA DAS MAGOAS, 45 - APTO 5','45214-410','SP','MAUA','MASCULINO','CENTRO','1980-11-20'),(12,'andre','54321','12345','12313134','2314124','jsdncvavbahkbv','kjafoiwehnoigfjl','12313','ES','saopaulo','MASCULINO','jnvdsajfnjlsav c','2015-12-02');
 
 /*Table structure for table `pedido` */
 
@@ -103,7 +183,7 @@ CREATE TABLE `pedido` (
 
 /*Data for the table `pedido` */
 
-insert  into `pedido`(`cod_pedido`,`cod_fornecedor`,`valor`,`status`) values (1,NULL,NULL,0),(2,NULL,NULL,0),(3,NULL,NULL,0),(4,NULL,NULL,0),(5,NULL,NULL,0),(6,4,120,0);
+insert  into `pedido`(`cod_pedido`,`cod_fornecedor`,`valor`,`status`) values (1,2,146,0),(2,4,24,0),(3,4,35,0),(4,4,107.5,0),(5,NULL,NULL,0),(6,2,0,0),(7,NULL,NULL,0),(8,NULL,NULL,0);
 
 /*Table structure for table `procedimento` */
 
@@ -112,16 +192,17 @@ DROP TABLE IF EXISTS `procedimento`;
 CREATE TABLE `procedimento` (
   `cod_procedimento` int(11) NOT NULL AUTO_INCREMENT,
   `ds_procedimento` varchar(45) DEFAULT NULL,
-  `valor` double DEFAULT NULL,
+  `valor` varchar(10) DEFAULT NULL,
   `cod_usuario` int(11) DEFAULT NULL,
-  PRIMARY KEY (`cod_procedimento`),
-  KEY `cod_usuario_idx` (`cod_usuario`),
-  CONSTRAINT `cod_usuario` FOREIGN KEY (`cod_usuario`) REFERENCES `usuario` (`cod_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+  `detalhes` varchar(200) DEFAULT NULL,
+  `codprocede` varchar(5) DEFAULT NULL,
+  `data` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`cod_procedimento`)
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 /*Data for the table `procedimento` */
 
-insert  into `procedimento`(`cod_procedimento`,`ds_procedimento`,`valor`,`cod_usuario`) values (1,'CANAL',900,1),(2,'IMPLANTE',1500,1),(3,'EXTRAÇÃO',250,1),(4,'ABTURAÇÃO',400,4),(5,'CLAREAMENTO',1000,4),(6,'RASPAGEM',500,4),(7,'RESTAURAÇÃO',500,4),(8,'PRÓTESE EM RESINA',350,4),(9,'CONSULTA DE URGÊNCIA',35,4),(10,'CONTROLE DE CÁRIE',9.1,4),(11,'RESTAURAÇÃO EM IONÔMERO DE VIDRO',34.8,4),(12,'RESTAURAÇÃO EM RESINA FOTOPOLIMERIZÁVEL',50,4),(13,'RESTAURAÇÃO DE AMÁLGAMA',57.3,4);
+insert  into `procedimento`(`cod_procedimento`,`ds_procedimento`,`valor`,`cod_usuario`,`detalhes`,`codprocede`,`data`) values (1,'CANAL','900',1,NULL,NULL,NULL),(2,'IMPLANTE','1500',1,NULL,NULL,NULL),(3,'EXTRAÇÃO','250',1,NULL,NULL,NULL),(4,'ABTURAÇÃO','400',4,NULL,NULL,NULL),(5,'CLAREAMENTO','1000',4,NULL,NULL,NULL),(6,'RASPAGEM','500',4,NULL,NULL,NULL),(7,'RESTAURAÇÃO','500',4,NULL,NULL,NULL),(8,'PRÓTESE EM RESINA','350',4,NULL,NULL,NULL),(9,'CONSULTA DE URGÊNCIA','35',4,NULL,NULL,NULL),(10,'CONTROLE DE CÁRIE','9.1',4,NULL,NULL,NULL),(11,'RESTAURAÇÃO EM IONÔMERO DE VIDRO','34.8',4,NULL,NULL,NULL),(12,'RESTAURAÇÃO EM RESINA FOTOPOLIMERIZÁVEL','50',4,NULL,NULL,NULL),(13,'RESTAURAÇÃO DE AMÁLGAMA','57.3',4,NULL,NULL,NULL),(38,'EXTRAÇÃO','10',12,'jfjhgjkhkh','3',NULL),(39,'EXTRAÇÃO','210',12,'dfdhjk','3',NULL),(40,'EXTRAÇÃO','210',12,'dfdhjk','3',NULL),(41,'teste','1010.0',1,NULL,NULL,NULL);
 
 /*Table structure for table `produto` */
 
@@ -162,6 +243,21 @@ CREATE TABLE `produto_tipo` (
 /*Data for the table `produto_tipo` */
 
 insert  into `produto_tipo`(`cod_tipoproduto`,`descricao`) values (1,'MEDICAMENTO'),(2,'CONSUMO'),(3,'CIRÚRGICO');
+
+/*Table structure for table `professor` */
+
+DROP TABLE IF EXISTS `professor`;
+
+CREATE TABLE `professor` (
+  `idprof` int(11) NOT NULL AUTO_INCREMENT,
+  `cpf` varchar(11) DEFAULT NULL,
+  `nome` varchar(50) DEFAULT NULL,
+  `sexo` varchar(1) DEFAULT NULL,
+  `salario` float DEFAULT NULL,
+  PRIMARY KEY (`idprof`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `professor` */
 
 /*Table structure for table `usuario` */
 

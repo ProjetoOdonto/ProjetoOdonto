@@ -22,6 +22,11 @@ public class ContasReceber_Consultar extends javax.swing.JFrame {
     public ContasReceber_Consultar() {
         initComponents();
         
+        
+        
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE); 
+        this.setLocationRelativeTo(null); 
+        
     }
 
     /**
