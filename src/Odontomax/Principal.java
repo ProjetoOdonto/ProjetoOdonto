@@ -9,6 +9,7 @@ import Odontomax.Compras.Compras;
 import Odontomax.Fornecedor.CadastroFornecedores;
 import Odontomax.Paciente.CadastroPaciente;
 import Classes.Usuario;
+import Odontomax.Paciente.CadastroPaciente_NovoRegistro;
 import javax.swing.JOptionPane;
 
 
@@ -187,12 +188,12 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         if (lista_rotinas.getSelectedIndex()==0 && permissao == 2){
-            CadastroPaciente user = new CadastroPaciente(nome,setor,usuario);            
+            CadastroPaciente_NovoRegistro user = new CadastroPaciente_NovoRegistro(nome,setor,usuario);            
             user.setVisible(true);
         } 
         if (lista_rotinas.getSelectedIndex()==0 && permissao == 1){
-            CadastroPaciente user = new CadastroPaciente(nome,setor,usuario);            
-            user.setVisible(true);            
+            CadastroPaciente_NovoRegistro user = new CadastroPaciente_NovoRegistro(nome,setor,usuario);            
+            user.setVisible(true);           
         } 
         if (lista_rotinas.getSelectedIndex()==0 && permissao > 2 ){
             JOptionPane.showMessageDialog(null,"Usuário sem permissão de acesso");
