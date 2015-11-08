@@ -231,6 +231,11 @@ public class ContasPagar_Gerenciar extends javax.swing.JFrame {
 
         btn_exibir1.setText("Exibir");
         btn_exibir1.setEnabled(false);
+        btn_exibir1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exibir1ActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Selecionar Filtros"));
 
@@ -500,6 +505,10 @@ public class ContasPagar_Gerenciar extends javax.swing.JFrame {
             txt_procedimento.setEnabled(false);
         }
     }//GEN-LAST:event_radio_fornecedor1ItemStateChanged
+
+    private void btn_exibir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exibir1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_exibir1ActionPerformed
 
     /**
      * @param args the command line arguments
