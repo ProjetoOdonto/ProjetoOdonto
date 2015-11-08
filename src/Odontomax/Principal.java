@@ -198,8 +198,8 @@ public class Principal extends javax.swing.JFrame {
         if (lista_rotinas.getSelectedIndex()==0 && permissao > 2 ){
             JOptionPane.showMessageDialog(null,"Usuário sem permissão de acesso");
         }
-        if (lista_rotinas.getSelectedIndex()==1 && permissao == 2 && permissao == 1){
-            Agendamento user = new Agendamento();            
+        if (lista_rotinas.getSelectedIndex()==1){
+            Agendamento_NovoRegistro user = new Agendamento_NovoRegistro();            
             user.setVisible(true);
         }
         if (lista_rotinas.getSelectedIndex()==2){

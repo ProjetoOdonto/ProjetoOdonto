@@ -152,7 +152,7 @@ public class Agendamento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
-        dispose();        
+             
     }//GEN-LAST:event_btn_voltarActionPerformed
 
     /**
