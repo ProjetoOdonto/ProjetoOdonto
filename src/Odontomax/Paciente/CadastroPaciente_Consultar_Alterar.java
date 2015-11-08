@@ -421,7 +421,7 @@ public class CadastroPaciente_Consultar_Alterar extends javax.swing.JFrame {
                         .addComponent(btn_novo)
                         .addGap(127, 127, 127)
                         .addComponent(btn_voltar)))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -437,10 +437,10 @@ public class CadastroPaciente_Consultar_Alterar extends javax.swing.JFrame {
                             .addComponent(btn_voltar))))
                 .addGap(11, 11, 11)
                 .addComponent(painel_dados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(137, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(676, 695));
+        setSize(new java.awt.Dimension(682, 622));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
