@@ -55,10 +55,12 @@ public class Principal extends javax.swing.JFrame {
         btn_sair = new javax.swing.JButton();
         btn_selecionar = new javax.swing.JButton();
         btn_trocarusuario = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema OdontoMax");
         setResizable(false);
+        getContentPane().setLayout(null);
 
         painel_usuario.setBorder(javax.swing.BorderFactory.createTitledBorder("Usuário"));
 
@@ -87,22 +89,24 @@ public class Principal extends javax.swing.JFrame {
         painel_usuarioLayout.setVerticalGroup(
             painel_usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painel_usuarioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(painel_usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label_nomeusuario, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painel_usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label_setorusuario)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painel_usuarioLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addContainerGap())))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
+
+        getContentPane().add(painel_usuario);
+        painel_usuario.setBounds(10, 11, 240, 90);
 
         painel_rotinas.setBorder(javax.swing.BorderFactory.createTitledBorder("Rotinas"));
 
         lista_rotinas.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Cadastro de Pacientes", "Agendamento", "Faturamento", "Emitir Fatura Serviço", "Orçamento", "Odontograma", "Relatório Médico", "Compras", "Contas a Pagar", "Contas a Receber", "Estoque", "Cadastro de Fornecedores", "Cadastro de Produtos", "Caixa", "Procedimentos" };
+            String[] strings = { "Registro de Pacientes", "Agendamento", "Faturamento", "Emitir Fatura Serviço", "Orçamento", "Odontograma", "Relatório Médico", "Compras", "Contas a Pagar", "Contas a Receber", "Estoque", "Cadastro de Fornecedores", "Cadastro de Produtos", "Caixa", "Procedimentos" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
@@ -114,14 +118,17 @@ public class Principal extends javax.swing.JFrame {
         painel_rotinas.setLayout(painel_rotinasLayout);
         painel_rotinasLayout.setHorizontalGroup(
             painel_rotinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painel_rotinasLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 10, Short.MAX_VALUE))
         );
         painel_rotinasLayout.setVerticalGroup(
             painel_rotinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painel_rotinasLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
         );
+
+        getContentPane().add(painel_rotinas);
+        painel_rotinas.setBounds(10, 132, 240, 390);
 
         btn_sair.setText("Sair");
         btn_sair.addActionListener(new java.awt.event.ActionListener() {
@@ -129,6 +136,8 @@ public class Principal extends javax.swing.JFrame {
                 btn_sairActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_sair);
+        btn_sair.setBounds(893, 536, 70, 49);
 
         btn_selecionar.setText("Selecionar");
         btn_selecionar.addActionListener(new java.awt.event.ActionListener() {
@@ -136,6 +145,8 @@ public class Principal extends javax.swing.JFrame {
                 btn_selecionarActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_selecionar);
+        btn_selecionar.setBounds(10, 537, 140, 47);
 
         btn_trocarusuario.setText("Trocar Usuário");
         btn_trocarusuario.addActionListener(new java.awt.event.ActionListener() {
@@ -143,42 +154,12 @@ public class Principal extends javax.swing.JFrame {
                 btn_trocarusuarioActionPerformed(evt);
             }
         });
+        getContentPane().add(btn_trocarusuario);
+        btn_trocarusuario.setBounds(784, 536, 103, 49);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btn_selecionar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 376, Short.MAX_VALUE)
-                        .addComponent(btn_trocarusuario)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_sair, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(painel_rotinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(painel_usuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(painel_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(painel_rotinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btn_sair, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_selecionar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btn_trocarusuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Odontomax/bg.jpg"))); // NOI18N
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(0, 0, 660, 600);
 
         setSize(new java.awt.Dimension(672, 635));
         setLocationRelativeTo(null);
@@ -187,10 +168,7 @@ public class Principal extends javax.swing.JFrame {
     private void btn_selecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_selecionarActionPerformed
         // TODO add your handling code here:
         
-        if (lista_rotinas.getSelectedIndex()==0 && permissao == 2){
-            CadastroPaciente_NovoRegistro user = new CadastroPaciente_NovoRegistro(nome,setor,usuario);            
-            user.setVisible(true);
-        } 
+       
         if (lista_rotinas.getSelectedIndex()==0 && permissao == 1){
             CadastroPaciente_NovoRegistro user = new CadastroPaciente_NovoRegistro(nome,setor,usuario);            
             user.setVisible(true);           
@@ -308,6 +286,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btn_trocarusuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel label_nomeusuario;
     private javax.swing.JLabel label_setorusuario;
