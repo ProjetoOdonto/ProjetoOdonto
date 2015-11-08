@@ -1103,10 +1103,12 @@ public class Banco {
               
           
             
-                sql = "INSERT INTO procedimento(cod_usuario, codprocede, ds_procedimento, detalhes, valor) VALUES ('"; // nome das variaveis do BD
+                sql = "INSERT INTO odontograma(cod_usuario, codprocede, ds_procedimento, detalhes, valor) VALUES ('"; // nome das variaveis do BD
                 sql += cod + "', '" + codprocede + "','" + dsprocede + "' , '"+ detalhes +"' , '"+ valor +"')";
                 
            
+                sql = "INSERT INTO hprocede(codpaciente, ds_procedimento) VALUES ('"; // nome das variaveis do BD
+                sql += cod + "', '" + dsprocede + "')";
 
                 stmt.executeUpdate(sql);
 
