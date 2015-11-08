@@ -785,6 +785,24 @@ public class Banco {
 
     }
     
+     public boolean excluiFornecedor(String cod) {
+        String sql;
+        conecta();
+
+        try {
+            sql = "DELETE FROM despecas WHERE COD_DESPECAS= '" + cod + "';";
+            System.out.println(sql);
+            stmt.executeUpdate(sql);
+            
+            return true;
+
+        } catch (SQLException e) {
+
+            return false;
+        }
+
+    }
+    
     public boolean excluiUsuario(String cpf) {
         String sql;
         conecta();
@@ -1103,7 +1121,7 @@ public class Banco {
               
           
             
-                sql = "INSERT INTO odontograma(cod_usuario, codprocede, ds_procedimento, detalhes, valor) VALUES ('"; // nome das variaveis do BD
+                sql = "INSERT INTO procedimentoc(od_usuario, codprocede, ds_procedimento, detalhes, valor) VALUES ('"; // nome das variaveis do BD
                 sql += cod + "', '" + codprocede + "','" + dsprocede + "' , '"+ detalhes +"' , '"+ valor +"')";
                 
            
