@@ -83,7 +83,7 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painel_usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label_setorusuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(label_setorusuario, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
                     .addComponent(label_nomeusuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         painel_usuarioLayout.setVerticalGroup(
@@ -101,12 +101,12 @@ public class Principal extends javax.swing.JFrame {
         );
 
         getContentPane().add(painel_usuario);
-        painel_usuario.setBounds(10, 11, 240, 90);
+        painel_usuario.setBounds(10, 11, 180, 90);
 
         painel_rotinas.setBorder(javax.swing.BorderFactory.createTitledBorder("Rotinas"));
 
         lista_rotinas.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Registro de Pacientes", "Agendamento", "Faturamento", "Emitir Fatura Serviço", "Orçamento", "Odontograma", "Relatório Médico", "Compras", "Contas a Pagar", "Contas a Receber", "Estoque", "Cadastro de Fornecedores", "Cadastro de Produtos", "Caixa", "Procedimentos" };
+            String[] strings = { "Registro de Pacientes", "Agendamento", "Emitir Fatura Serviço", "Orçamento", "Odontograma", "Relatório Médico", "Compras", "Contas a Pagar", "Contas a Receber", "Estoque", "Cadastro de Fornecedores", "Cadastro de Produtos", "Caixa", "Procedimentos" };
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
@@ -119,16 +119,16 @@ public class Principal extends javax.swing.JFrame {
         painel_rotinasLayout.setHorizontalGroup(
             painel_rotinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painel_rotinasLayout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 3, Short.MAX_VALUE))
         );
         painel_rotinasLayout.setVerticalGroup(
             painel_rotinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
         );
 
         getContentPane().add(painel_rotinas);
-        painel_rotinas.setBounds(10, 132, 240, 390);
+        painel_rotinas.setBounds(10, 132, 200, 350);
 
         btn_sair.setText("Sair");
         btn_sair.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +146,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btn_selecionar);
-        btn_selecionar.setBounds(10, 537, 140, 47);
+        btn_selecionar.setBounds(10, 520, 140, 47);
 
         btn_trocarusuario.setText("Trocar Usuário");
         btn_trocarusuario.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +161,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(0, 0, 660, 600);
 
-        setSize(new java.awt.Dimension(672, 635));
+        setSize(new java.awt.Dimension(610, 624));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -180,57 +180,54 @@ public class Principal extends javax.swing.JFrame {
             Agendamento user = new Agendamento();            
             user.setVisible(true);
         }
+        
         if (lista_rotinas.getSelectedIndex()==2){
-            Faturamento user = new Faturamento();
-            user.setVisible(true);
-        }
-        if (lista_rotinas.getSelectedIndex()==3){
             EmissaoFatura user = new EmissaoFatura();            
             user.setVisible(true);
         }
-        if (lista_rotinas.getSelectedIndex()==4){
+        if (lista_rotinas.getSelectedIndex()==3){
             Orçamento user = new Orçamento();
             user.setVisible(true);
         }
-        if (lista_rotinas.getSelectedIndex()==5){
+        if (lista_rotinas.getSelectedIndex()==4){
             Odontograma user = new Odontograma();
             user.setVisible(true);
         }
-        if (lista_rotinas.getSelectedIndex()==6){
+        if (lista_rotinas.getSelectedIndex()==5){
             RelatorioMedico user = new RelatorioMedico();
             user.setVisible(true);
         }
-        if (lista_rotinas.getSelectedIndex()==7){
+        if (lista_rotinas.getSelectedIndex()==6){
             Compras user = new Compras(montaUsuario());
             user.setVisible(true);
         }
-        if (lista_rotinas.getSelectedIndex()==8){
+        if (lista_rotinas.getSelectedIndex()==7){
             ContasPagar user = new ContasPagar();
             user.setVisible(true);
         }
-        if (lista_rotinas.getSelectedIndex()==9){
+        if (lista_rotinas.getSelectedIndex()==8){
             ContasReceber user = new ContasReceber(); 
             user.setVisible(true);
         }
-        if (lista_rotinas.getSelectedIndex()==10){
+        if (lista_rotinas.getSelectedIndex()==9){
             Estoque user = new Estoque(); 
             user.setVisible(true);
         }
-        if (lista_rotinas.getSelectedIndex()==11){
+        if (lista_rotinas.getSelectedIndex()==10){
             CadastroFornecedores user = new CadastroFornecedores(montaUsuario());
             user.setVisible(true);
         }
-        if (lista_rotinas.getSelectedIndex()==12){
+        if (lista_rotinas.getSelectedIndex()==11){
             CadastroProdutos user = new CadastroProdutos(montaUsuario()); 
             user.setVisible(true);
         }
         
-        if (lista_rotinas.getSelectedIndex()==13){
+        if (lista_rotinas.getSelectedIndex()==12){
             Caixa user = new Caixa(); 
             user.setVisible(true);
         }
         
-        if (lista_rotinas.getSelectedIndex()==14){
+        if (lista_rotinas.getSelectedIndex()==13){
             Procedimentos user = new Procedimentos(montaUsuario()); 
             user.setVisible(true);
         }

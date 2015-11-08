@@ -52,6 +52,7 @@ GerarPdf pdf = new GerarPdf();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel6 = new javax.swing.JPanel();
         painel_usuario = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -59,14 +60,9 @@ GerarPdf pdf = new GerarPdf();
         jLabel3 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         txDataHoje = new com.toedter.calendar.JDateChooser();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        txt_cpf = new javax.swing.JTextField();
-        txt_nome = new javax.swing.JTextField();
-        btn_buscar_pac = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tabela_pesquisa_paciente = new javax.swing.JTable();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        hprocedimentos = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -83,12 +79,20 @@ GerarPdf pdf = new GerarPdf();
         jButton3 = new javax.swing.JButton();
         btn_voltar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        hprocedimentos = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txt_cpf = new javax.swing.JTextField();
+        txt_nome = new javax.swing.JTextField();
+        btn_buscar_pac = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabela_pesquisa_paciente = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Odontograma");
+        getContentPane().setLayout(null);
+
+        jPanel6.setLayout(null);
 
         painel_usuario.setBorder(javax.swing.BorderFactory.createTitledBorder("Usuário"));
 
@@ -141,53 +145,54 @@ GerarPdf pdf = new GerarPdf();
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Selecionar Paciente"));
-        jPanel1.setLayout(null);
+        jPanel6.add(painel_usuario);
+        painel_usuario.setBounds(10, 10, 274, 120);
 
-        jLabel5.setText("CPF:");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(70, 60, 60, 30);
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Histórico de Procedimentos"));
 
-        jLabel6.setText("Nome Paciente:");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(30, 20, 110, 30);
-        jPanel1.add(txt_cpf);
-        txt_cpf.setBounds(140, 60, 238, 30);
-
-        txt_nome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_nomeActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txt_nome);
-        txt_nome.setBounds(140, 20, 238, 30);
-
-        btn_buscar_pac.setText("Buscar");
-        btn_buscar_pac.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_buscar_pacActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btn_buscar_pac);
-        btn_buscar_pac.setBounds(420, 20, 100, 49);
-
-        tabela_pesquisa_paciente.setModel(new javax.swing.table.DefaultTableModel(
+        hprocedimentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-
+                "Procedimento"
             }
-        ));
-        tabela_pesquisa_paciente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabela_pesquisa_pacienteMouseClicked(evt);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tabela_pesquisa_paciente);
+        jScrollPane4.setViewportView(hprocedimentos);
 
-        jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 110, 529, 90);
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel6.add(jPanel5);
+        jPanel5.setBounds(10, 130, 270, 150);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Odontograma"));
 
@@ -338,7 +343,7 @@ GerarPdf pdf = new GerarPdf();
                         .addGap(18, 18, 18)
                         .addComponent(btn_voltar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE))
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -357,83 +362,64 @@ GerarPdf pdf = new GerarPdf();
                 .addGap(149, 149, 149))
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Histórico de Procedimentos"));
+        jPanel6.add(jPanel2);
+        jPanel2.setBounds(10, 280, 878, 288);
 
-        hprocedimentos.setModel(new javax.swing.table.DefaultTableModel(
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Selecionar Paciente"));
+        jPanel1.setLayout(null);
+
+        jLabel5.setText("CPF:");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(70, 60, 60, 30);
+
+        jLabel6.setText("Nome Paciente:");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(30, 20, 110, 30);
+        jPanel1.add(txt_cpf);
+        txt_cpf.setBounds(140, 60, 238, 30);
+
+        txt_nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nomeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txt_nome);
+        txt_nome.setBounds(140, 20, 238, 30);
+
+        btn_buscar_pac.setText("Buscar");
+        btn_buscar_pac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscar_pacActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_buscar_pac);
+        btn_buscar_pac.setBounds(420, 20, 100, 49);
+
+        tabela_pesquisa_paciente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Procedimento"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        ));
+        tabela_pesquisa_paciente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabela_pesquisa_pacienteMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(hprocedimentos);
+        jScrollPane1.setViewportView(tabela_pesquisa_paciente);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 110, 529, 90);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(painel_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(6, 6, 6)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 561, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(painel_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jPanel6.add(jPanel1);
+        jPanel1.setBounds(300, 10, 561, 230);
 
-        setBounds(0, 0, 956, 693);
+        getContentPane().add(jPanel6);
+        jPanel6.setBounds(0, 0, 904, 581);
+
+        setBounds(0, 0, 910, 615);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_voltarActionPerformed
@@ -598,6 +584,7 @@ GerarPdf pdf = new GerarPdf();
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
